@@ -1,0 +1,31 @@
+en:
+  pages:
+    index:
+      preset_title: "Presets"
+      preset_description: "Choose a preset configuration for your Rails app."
+      
+      database_title: "Database Options"
+      database_description: "Select a database configuration for your app."
+      
+      housekeeping_title: "Housekeeping"
+      housekeeping_description: "Manage system maintenance options for your app."
+      
+      javascript_title: "JavaScript"
+      javascript_description: "Choose a JavaScript bundling tool for your app."
+      
+      css_title: "CSS Framework"
+      css_description: "Choose a CSS framework for your application."
+      
+      pipeline_title: "Asset Pipeline"
+      pipeline_description: "Configure the asset pipeline for your app."
+      
+      rails_components_title: "Rails Components"
+      rails_components_description: "Enable or disable specific Rails components."
+
+      testing_title: "Testing"
+      testing_description: "Configure testing options for your application."
+      title: "Let's create your Rails 8 new app!"
+      name:
+        title: "App Name"
+        description: "Set the name of the application"
+        action: "The `--name=NAME` flag allows you to define the name of the application. If not specified, a default name will be used."

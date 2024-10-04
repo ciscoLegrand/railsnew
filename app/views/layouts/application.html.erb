@@ -23,9 +23,41 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+  <body class="bg-gradient-to-b from-indigo-700 via-black to-black h-screen flex flex-col">
+    <header class="flex-grow lg:w-full lg:max-w-6xl mx-4 lg:mx-auto my-6 flex flex-col lg:grid lg:grid-cols-3 items-center gap-4 bg-slate-900 shadow shadow-slate-800 rounded-xl lg:p-4 text-center hover:shadow-md hover:bg-slate-800 ease-in-out duration-300">
+      <!-- Primera columna (igual tamaño que la última) -->
+      <div class="flex justify-start items-center gap-4 px-4">
+        <h1 class="lg:text-2xl font-bold font-mono">
+           <span class="bg-clip-text text-transparent bg-gradient-to-r from-red-800 via-purple-500 to-indigo-500">
+            RailsNew
+            </span>
+        </h1>
+      </div>
+
+      <!-- Columna del nav, centrada -->
+      <nav class="flex justify-center items-center text-md lg:text-lg gap-4 col-span-1 order-3 lg:order-2 lg:flex-1">
+        <%= link_to "New App", root_path, class: "font-semibold text-indigo-500 hover:text-slate-200 px-3 py-1.5 rounded-lg hover:bg-indigo-400 ease-in-out duration-300" %>
+      </nav>
+
+      <!-- Última columna (igual tamaño que la primera) -->
+      <div class="flex justify-end items-center order-2 lg:order-3">
+        <span class="text-slate-400">contribute</span>
+      </div>
+    </header>
+
+    <main class="flex-grow px-4">
       <%= yield %>
     </main>
+
+    <footer class="w-full lg:container mx-auto flex justify-between px-8 py-2">
+      <p class=" text-sm text-slate-300">
+        Credits for the idea by <a href="https://github.com/ciscolegrand/railsnew" class="">Unknown</a>
+      </p>
+      <p class=" text-xs text-end text-slate-400">
+        Made with <span class="text-lg text-red-500 animate-pulse duration-500 ease-in-out">❤️</span> by <a href="https://github.com/ciscolegrand" class="text-base font-semibold text-indigo-500">Cisco González</a> <%= Date.today.year %>
+      </p>
+    </footer>
   </body>
+
+
 </html>

@@ -1,0 +1,193 @@
+<div class="mt-4 mb-16 h-[calc(100vh-20vh)] overflow-y-scroll" data-controller="rails-command">
+  <div class="w-full lg:max-w-4xl mx-auto mb-16 rounded-xl flex flex-col gap-8 z-10 relative">
+
+    <!-- Index title-->
+    <h1 class="text-lg lg:text-2xl font-bold text-center text-indigo-400">
+      <%= t('.title') %>
+    </h1>
+
+    <!-- App name -->
+    <div class="flex flex-col gap-2 px-4 py-2 border-slate700 bg-slate-800 shadow shadow-slate-500 rounded-lg">
+      <label for="appName" class="block  mb-2">
+        <span class="text-lg font-semibold text-indigo-500">
+          <%= t('.name.title') %>
+        </span>
+        <span class="text-slate-400 whitespace-nowrap">
+          <%= t('.name.description') %>
+        </span>
+      </label>
+          <%= text_field_tag :app_name, nil, id: "appName", 
+                          placeholder: "Enter app name",
+                          data: {
+                          'rails-command-target': 'input',
+                          action:'keyup->rails-command#updateOutput'
+                          },
+                          type: 'text',
+                          class: 'w-full bg-gray-700 text-white placeholder-gray-400 border border-gray-600 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent',
+                          aria: { label: "Enter app name" } %>
+
+       <span class="text-sm text-slate-400">
+          <%= t('.name.action') %>
+       </span>
+    </div>
+
+
+    <!-- Ruby Path -->
+    <div class="mb-8 px-4 hidden">
+      <label for="rubyPath" class="block text-sm font-medium text-gray-300 mb-2">Ruby Path (optional)</label>
+      <%= text_field_tag :ruby_path, nil, id: "rubyPath", 
+                          placeholder: "Enter Ruby path",
+                          data: {
+                          'rails-command-target': 'input',
+                          action:'keyup->rails-command#updateOutput'
+                          },
+                          type: 'text',
+                          class: 'w-full bg-gray-700 text-white placeholder-gray-400 border border-gray-600 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent mb-5',
+                          aria: { label: "Enter Ruby path" } %>
+    </div>
+
+    <!-- Template Path -->
+    <div class="mb-8 px-4 hidden">
+      <label for="templatePath" class="block text-sm font-medium text-gray-300 mb-2">Template Path (optional)</label>
+      <%= text_field_tag :template_path, nil, id: "templatePath", 
+                          placeholder: "Enter template path",
+                          data: {
+                          'rails-command-target': 'input',
+                          action:'keyup->rails-command#updateOutput'
+                          },
+                          type: 'text',
+                          class: 'w-full bg-gray-700 text-white placeholder-gray-400 border border-gray-600 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent mb-5',
+                          aria: { label: "Enter template path" } %>
+    </div>
+
+    <!-- Clipboard Section -->
+    <div data-controller="clipboard" class="sticky -top-0 z-20 w-full bg-gray-800 rounded-lg overflow-hidden shadow-md shadow-indigo-400/40 border-indigo-600" role="region" aria-label="Generated Command">
+      <div class="bg-gray-700 py-2 px-4 flex items-center justify-between">
+        <div class="flex space-x-2">
+          <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+          <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+          <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+        </div>
+        <button data-clipboard-target="button" data-action="click->clipboard#copyToClipboard" class="text-sm bg-purple-600 hover:bg-purple-700 text-white font-bold py-1.5 px-3 rounded transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50" aria-label="Copy to clipboard">
+          📋 Copy
+        </button>
+      </div>
+      <div data-rails-command-target="output" data-clipboard-target="source" class="py-6 px-4 text-lg font-mono bg-gray-900"></div>
+    </div>
+
+    <!-- Rails Presets -->
+    <div class="flex gap-4 items-center">
+      <h2 class="text-2xl font-bold text-center text-purple-300"><%= t(".preset_title") %></h2>
+      <p class="text-center text-gray-400"><%= t(".preset_description") %></p>
+    </div>
+    <div class="flex flex-col [&>*:nth-child(odd)]:bg-slate-800 [&>*:nth-child(even)]:bg-slate-700 [&>*:first-child]:rounded-t-xl [&>*:last-child]:rounded-b-xl">
+      <%= render(FlagCommand.new(flag: 'preset_none',  type: 'radio', target: 'preset', checked: true, label: 'None')) %>
+      <%= render(FlagCommand.new(flag: 'api',          type: 'radio', target: 'preset', label: 'API Only')) %>
+      <%= render(FlagCommand.new(flag: 'minimal',      type: 'radio', target: 'preset', label: 'Minimal')) %>
+    </div>
+
+    <!-- Database Options -->
+    <div class="flex gap-4 items-center">
+      <h2 class="text-2xl font-bold text-center text-purple-300"><%= t(".database_title") %></h2>
+      <p class="text-center text-gray-400"><%= t(".database_description") %></p>
+    </div>
+    <div class="flex flex-col [&>*:nth-child(odd)]:bg-slate-800 [&>*:nth-child(even)]:bg-slate-700 [&>*:first-child]:rounded-t-xl [&>*:last-child]:rounded-b-xl">
+      <%= render(FlagCommand.new(flag: 'sqlite3',         icon: 'sqlite',   type: 'radio', target: 'database', label: 'SQLite3', checked: true)) %>
+      <%= render(FlagCommand.new(flag: 'mysql',           icon: 'mysql',    type: 'radio', target: 'database', label: 'MySQL')) %>
+      <%= render(FlagCommand.new(flag: 'trilogy',         icon: '',         type: 'radio', target: 'database', label: 'Trilogy')) %>
+      <%= render(FlagCommand.new(flag: 'mariadb-mysql',   icon: 'mariadb',  type: 'radio', target: 'database', label: 'MariaDB (MySQL)')) %>
+      <%= render(FlagCommand.new(flag: 'mariadb-trilogy', icon: 'mariadb',  type: 'radio', target: 'database', label: 'MariaDB (Trilogy)')) %>
+      <%= render(FlagCommand.new(flag: 'postgresql',      icon: 'postgresql', type: 'radio', target: 'database', label: 'PostgreSQL')) %>
+    </div>
+
+    <!-- Asset Pipeline -->
+    <div class="flex gap-4 items-center">
+      <h2 class="text-2xl font-bold text-center text-purple-300"><%= t(".pipeline_title") %></h2>
+      <p class="text-center text-gray-400"><%= t(".pipeline_description") %></p>
+    </div>
+    <div class="flex flex-col [&>*:nth-child(odd)]:bg-slate-800 [&>*:nth-child(even)]:bg-slate-700 [&>*:first-child]:rounded-t-xl [&>*:last-child]:rounded-b-xl">
+      <%= render(FlagCommand.new(flag: 'pipeline_none', icon: '',       type: 'radio', target: 'pipeline', label: 'None')) %>
+      <%= render(FlagCommand.new(flag: 'propshaft',     icon: 'rails',  type: 'radio', target: 'pipeline', label: 'Propshaft', checked: true)) %>
+      <%= render(FlagCommand.new(flag: 'sprockets',     icon: 'ruby',   type: 'radio', target: 'pipeline', label: 'Sprockets')) %>
+    </div>
+
+    <!-- CSS Framework -->
+    <div class="flex flex-col">
+      <div class="flex gap-4 items-center">
+        <h2 class="text-2xl font-bold text-center text-purple-300"><%= t(".css_title") %></h2>
+        <p class="text-center text-gray-400"><%= t(".css_description") %></p>
+      </div>
+      <div class="flex">
+        <span class="text-md text-slate-300">* Check <%= link_to "https://github.com/rails/cssbundling-rails", "https://github.com/rails/cssbundling-rails", target: "_blank", class:"underline text-blue-400" %> for more information.</span>
+      </div>
+    </div>
+    <div class="flex flex-col [&>*:nth-child(odd)]:bg-slate-800 [&>*:nth-child(even)]:bg-slate-700 [&>*:first-child]:rounded-t-xl [&>*:last-child]:rounded-b-xl">
+      <%= render(FlagCommand.new(flag: 'css_none',  icon: 'css',        type: 'radio', target: 'css', label: 'None')) %>
+      <%= render(FlagCommand.new(flag: 'tailwind',  icon: 'tailwind',   type: 'radio', target: 'css', label: 'Tailwind', checked: true)) %>
+      <%= render(FlagCommand.new(flag: 'bootstrap', icon: 'bootstrap',  type: 'radio', target: 'css', label: 'Bootstrap')) %>
+      <%= render(FlagCommand.new(flag: 'bulma',     icon: 'bulma',      type: 'radio', target: 'css', label: 'Bulma')) %>
+      <%= render(FlagCommand.new(flag: 'postcss',   icon: 'postcss',    type: 'radio', target: 'css', label: 'PostCSS')) %>
+      <%= render(FlagCommand.new(flag: 'sass',      icon: 'sass',       type: 'radio', target: 'css', label: 'Sass')) %>
+    </div>
+
+    <!-- JavaScript -->
+    <div class="flex gap-4 items-center">
+      <h2 class="text-2xl font-bold text-center text-purple-300"><%= t(".javascript_title") %></h2>
+      <p class="text-center text-gray-400"><%= t(".javascript_description") %></p>
+    </div>
+    <div class="flex flex-col [&>*:nth-child(odd)]:bg-slate-800 [&>*:nth-child(even)]:bg-slate-700 [&>*:first-child]:rounded-t-xl [&>*:last-child]:rounded-b-xl">
+      <%= render(FlagCommand.new(flag: 'javascript',  icon: 'javascript', type: 'radio', target: 'javascript', label: 'None')) %>
+      <%= render(FlagCommand.new(flag: 'importmap',   icon: 'javascript', type: 'radio', target: 'javascript', label: 'Importmap', checked: true)) %>
+      <%= render(FlagCommand.new(flag: 'esbuild',     icon: 'esbuild',    type: 'radio', target: 'javascript', label: 'ESBuild')) %>
+      <%= render(FlagCommand.new(flag: 'rollup',      icon: 'rollup',     type: 'radio', target: 'javascript', label: 'Rollup')) %>
+      <%= render(FlagCommand.new(flag: 'webpack',     icon: 'webpack',    type: 'radio', target: 'javascript', label: 'Webpack')) %>
+      <%= render(FlagCommand.new(flag: 'bun',         icon: 'bun',        type: 'radio', target: 'javascript', label: 'Bun')) %>
+    </div>
+
+    <!-- Rails Components goodies-->
+    <div class="flex gap-4 items-center">
+      <h2 class="text-2xl font-bold text-center text-purple-300"><%= t(".rails_components_title") %></h2>
+      <p class="text-center text-gray-400"><%= t(".rails_components_description") %></p>
+    </div>
+    <div class="flex flex-col [&>*:nth-child(odd)]:bg-slate-800 [&>*:nth-child(even)]:bg-slate-700 [&>*:first-child]:rounded-t-xl [&>*:last-child]:rounded-b-xl">
+      <%= render(FlagCommand.new(flag: 'action-mailer',   icon: 'rails',    type: 'checkbox', target: 'railsComponents', checked: true, label: 'Action Mailer')) %>
+      <%= render(FlagCommand.new(flag: 'action-mailbox',  icon: 'rails',    type: 'checkbox', target: 'railsComponents', checked: true, label: 'Action Mailbox')) %>
+      <%= render(FlagCommand.new(flag: 'action-text',     icon: 'rails',    type: 'checkbox', target: 'railsComponents', checked: true, label: 'Action Text')) %>
+      <%= render(FlagCommand.new(flag: 'active-record',   icon: 'rails',    type: 'checkbox', target: 'railsComponents', checked: true, label: 'Active Record')) %>
+      <%= render(FlagCommand.new(flag: 'active-job',      icon: 'rails',    type: 'checkbox', target: 'railsComponents', checked: true, label: 'Active Job')) %>
+      <%= render(FlagCommand.new(flag: 'active-storage',  icon: 'rails',    type: 'checkbox', target: 'railsComponents', checked: true, label: 'Active Storage')) %>
+      <%= render(FlagCommand.new(flag: 'action-cable',    icon: 'rails',    type: 'checkbox', target: 'railsComponents', checked: true, label: 'Action Cable')) %>
+      <%= render(FlagCommand.new(flag: 'jbuilder',        icon: 'rails',    type: 'checkbox', target: 'railsComponents', checked: true, label: 'Jbuilder')) %>
+      <%= render(FlagCommand.new(flag: 'hotwire',         icon: 'hotwire',  type: 'checkbox', target: 'railsComponents', checked: true, label: 'Hotwire')) %>
+    </div>
+
+    <!-- Housekeeping -->
+    <div class="flex gap-4 items-center">
+      <h2 class="text-2xl font-bold text-center text-purple-300"><%= t(".housekeeping_title") %></h2>
+      <p class="text-center text-gray-400"><%= t(".housekeeping_description") %></p>
+    </div>
+    <div class="flex flex-col [&>*:nth-child(odd)]:bg-slate-800 [&>*:nth-child(even)]:bg-slate-700 [&>*:first-child]:rounded-t-xl [&>*:last-child]:rounded-b-xl">
+      <%= render(FlagCommand.new(flag: 'git',           icon: 'git',      type: 'checkbox', target: 'housekeeping',   checked: true, label: 'Skip .keep Files')) %>
+      <%= render(FlagCommand.new(flag: 'keeps',         icon: '',         type: 'checkbox', target: 'housekeeping',   checked: true, label: 'Skip .keep Files')) %>
+      <%= render(FlagCommand.new(flag: 'bootsnap',      icon: '',         type: 'checkbox', target: 'housekeeping',   checked: true, label: 'Skip Bootsnap')) %>
+      <%= render(FlagCommand.new(flag: 'dev-gems',      icon: 'ruby',     type: 'checkbox', target: 'housekeeping',   checked: true, label: 'Skip Development Gems')) %>
+      <%= render(FlagCommand.new(flag: 'rubocop',       icon: 'rubocop',  type: 'checkbox', target: 'housekeeping',   checked: true, label: 'Skip RuboCop Setup')) %>
+      <%= render(FlagCommand.new(flag: 'brakeman',      icon: 'brakeman', type: 'checkbox', target: 'housekeeping',   checked: true, label: 'Skip Brakeman Setup')) %>
+      <%= render(FlagCommand.new(flag: 'ci',            icon: 'github',   type: 'checkbox', target: 'housekeeping',   checked: true, label: 'Skip GitHub CI Files')) %>
+      <%= render(FlagCommand.new(flag: 'kamal',         icon: '',         type: 'checkbox', target: 'housekeeping',   checked: true, label: 'Skip Kamal Setup')) %>
+      <%= render(FlagCommand.new(flag: 'solid',         icon: 'rails',    type: 'checkbox', target: 'housekeeping',   checked: true, label: 'Skip Solid Cache & Queue Setup')) %>
+      <%= render(FlagCommand.new(flag: 'docker',        icon: 'docker',   type: 'checkbox', target: 'versionControl', checked: true, label: 'Skip Dockerfile, .dockerignore and bin/docker-entrypoint')) %>
+      <%= render(FlagCommand.new(flag: 'devcontainer',  icon: '',         type: 'checkbox', target: 'advanced', label: 'Generate Devcontainer Files')) %>
+    </div>
+    
+    <!-- Testing -->
+    <div class="flex gap-4 items-center">
+      <h2 class="text-2xl font-bold text-center text-purple-300"><%= t(".testing_title") %></h2>
+      <p class="text-center text-gray-400"><%= t(".testing_description") %></p>
+    </div>
+    <div class="flex flex-col [&>*:nth-child(odd)]:bg-slate-800 [&>*:nth-child(even)]:bg-slate-700 [&>*:first-child]:rounded-t-xl [&>*:last-child]:rounded-b-xl">
+      <%= render(FlagCommand.new(flag: 'test',        type: 'checkbox', target: 'tests', checked: false, label: 'Skip Test Files')) %>
+      <%= render(FlagCommand.new(flag: 'system-test', type: 'checkbox', target: 'tests', checked: false, label: 'Skip System Tests')) %>
+    </div>
+  </div>
+</div>
