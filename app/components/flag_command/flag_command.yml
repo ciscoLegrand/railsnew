@@ -1,0 +1,363 @@
+en:
+  flag_command:
+    # Namespace
+    namespace:
+      title: "Namespace"
+      description: "Include namespace (affects only isolated engines)"
+      action: "If the flag `--skip-namespace` is checked, namespaces will be skipped. If not checked, namespaces will be included."
+
+    # Collision Check
+    collision_check:
+      title: "Collision Check"
+      description: "Run collision check to prevent overwriting files"
+      action: "If the flag `--skip-collision-check` is checked, collision checks will be skipped. If not, collision checks will be performed."
+
+    # Ruby Path
+    ruby:
+      title: "Ruby Path"
+      description: "Specify the path to the Ruby binary"
+      action: "The `--ruby=PATH` flag allows you to set a custom Ruby binary path. If not specified, the default Ruby will be used."
+
+    # App Name
+    name:
+      title: "App Name"
+      description: "Set the name of the application"
+      action: "The `--name=NAME` flag allows you to define the name of the application. If not specified, a default name will be used."
+
+    # Application Template
+    template:
+      title: "Application Template"
+      description: "Use a custom application template"
+      action: "The `--template=TEMPLATE` flag allows you to specify a template. If not used, the default Rails template will be applied."
+
+    # Database
+    database:
+      title: "Database"
+      description: "Preconfigure for a specific database"
+      action: "The `--database=DATABASE` flag configures the application for a specific database. If not specified, it defaults to sqlite3."
+
+    # Git
+    git:
+      title: "Git"
+      description: "Initialize a Git repository"
+      action: "If the flag `--skip-git` is checked, Git initialization will be skipped. If not checked, Git will be initialized with `.gitignore` and `.gitattributes`."
+
+    # Docker
+    docker:
+      title: "Docker"
+      description: "Include Docker configuration files"
+      action: "If the flag `--skip-docker` is checked, Docker configuration files will not be generated. If not checked, Docker files will be added."
+
+    # .keep Files
+    keeps:
+      title: ".keep Files"
+      description: "Include .keep files for source control"
+      action: "If the flag `--skip-keeps` is checked, `.keep` files for empty directories will be skipped. If not, they will be generated."
+
+    # Action Mailer
+    action_mailer:
+      title: "Action Mailer"
+      description: "Include Action Mailer functionality"
+      action: "If the flag `--skip-action-mailer` is checked, Action Mailer files will not be generated. If not checked, they will be included."
+
+    # Action Mailbox
+    action_mailbox:
+      title: "Action Mailbox"
+      description: "Include Action Mailbox for handling incoming emails"
+      action: "If the flag `--skip-action-mailbox` is checked, Action Mailbox will be skipped. If not, it will be added to the application."
+
+    # Action Text
+    action_text:
+      title: "Action Text"
+      description: "Include Action Text for rich content"
+      action: "If the flag `--skip-action-text` is checked, Action Text will not be included. If not, it will be added."
+
+    # Active Record
+    active_record:
+      title: "Active Record"
+      description: "Include Active Record for database interaction"
+      action: "If the flag `--skip-active-record` is checked, Active Record files will not be generated. If not, Active Record will be included."
+
+    # Active Job
+    active_job:
+      title: "Active Job"
+      description: "Include Active Job for background job processing"
+      action: "If the flag `--skip-active-job` is checked, Active Job will not be generated. If not, it will be added."
+
+    # Active Storage
+    active_storage:
+      title: "Active Storage"
+      description: "Include Active Storage for file uploads"
+      action: "If the flag `--skip-active-storage` is checked, Active Storage files will not be generated. If not, Active Storage will be included."
+
+    # Action Cable
+    action_cable:
+      title: "Action Cable"
+      description: "Include Action Cable for real-time WebSocket features"
+      action: "If the flag `--skip-action-cable` is checked, Action Cable files will not be included. If not, Action Cable will be generated."
+
+    # Asset Pipeline
+    asset_pipeline:
+      title: "Asset Pipeline"
+      description: "Include the asset pipeline for managing assets"
+      action: "If the flag `--skip-asset-pipeline` is checked, the asset pipeline will not be included. If not, it will be added."
+
+    # Hotwire
+    hotwire:
+      title: "Hotwire"
+      description: "Include Hotwire integration for reactive updates"
+      action: "If the flag `--skip-hotwire` is checked, Hotwire will be skipped. If not, Hotwire integration will be added."
+
+    # Jbuilder
+    jbuilder:
+      title: "Jbuilder"
+      description: "Include Jbuilder for building JSON APIs"
+      action: "If the flag `--skip-jbuilder` is checked, Jbuilder will not be included. If not, it will be added."
+
+    # Test Files
+    test:
+      title: "Test Files"
+      description: "Include test files for the application"
+      action: "If the flag `--skip-test` is checked, test files will not be generated. If not, they will be included."
+
+    # System Test
+    system_test:
+      title: "System Test"
+      description: "Include system test files"
+      action: "If the flag `--skip-system-test` is checked, system test files will not be included. If not, they will be added."
+
+    # Bootsnap
+    bootsnap:
+      title: "Bootsnap"
+      description: "Include Bootsnap for speeding up boot time"
+      action: "If the flag `--skip-bootsnap` is checked, Bootsnap will not be added. If not, it will be included."
+
+    # Development Gems
+    dev_gems:
+      title: "Development Gems"
+      description: "Include development-specific gems (e.g., web-console)"
+      action: "If the flag `--skip-dev-gems` is checked, development gems will be skipped. If not, they will be included."
+
+    # Thruster
+    thruster:
+      title: "Thruster"
+      description: "Include Thruster setup"
+      action: "If the flag `--skip-thruster` is checked, Thruster setup will not be included. If not, it will be added."
+
+    # RuboCop
+    rubocop:
+      title: "RuboCop"
+      description: "Include RuboCop for code linting"
+      action: "If the flag `--skip-rubocop` is checked, RuboCop setup will not be included. If not, it will be added."
+
+    # Brakeman
+    brakeman:
+      title: "Brakeman"
+      description: "Include Brakeman for security checks"
+      action: "If the flag `--skip-brakeman` is checked, Brakeman setup will be skipped. If not, it will be included."
+
+    # GitHub CI
+    ci:
+      title: "GitHub CI"
+      description: "Include GitHub CI configuration files"
+      action: "If the flag `--skip-ci` is checked, GitHub CI files will not be included. If not, they will be generated."
+
+    # Kamal
+    kamal:
+      title: "Kamal"
+      description: "Include Kamal for deployment configuration"
+      action: "If the flag `--skip-kamal` is checked, Kamal setup will be skipped. If not, it will be added."
+
+    # Solid Cache & Queue
+    solid:
+      title: "Solid Cache & Queue"
+      description: "Include Solid Cache & Queue setup"
+      action: "If the flag `--skip-solid` is checked, Solid Cache & Queue will not be included. If not, they will be added."
+
+    # Devcontainer
+    devcontainer:
+      title: "Devcontainer"
+      description: "Generate devcontainer files for development environments"
+      action: "If the flag `--skip-devcontainer` is checked, devcontainer files will not be generated. If not, they will be added."
+
+    # JavaScript Approach
+    javascript_approach:
+      title: "JavaScript Approach"
+      description: "Choose the JavaScript approach"
+      action: "If the `--javascript=JAVASCRIPT` flag is used, the specified JavaScript approach will be configured (default: importmap)."
+
+    # CSS Processor
+    css_processor:
+      title: "CSS Processor"
+      description: "Choose a CSS processor"
+      action: "If the `--css=CSS` flag is specified, the selected CSS processor will be used. If not specified, no CSS processor will be added."
+
+    # Bundle Install
+    bundle:
+      title: "Bundle Install"
+      description: "Run bundle install after generating the application"
+      action: "If the flag `--skip-bundle` is checked, `bundle install` will not run. If not checked, `bundle install` will be executed."
+
+    # Decrypted Diffs
+    decrypted_diffs:
+      title: "Decrypted Diffs"
+      description: "Configure git to show decrypted diffs of encrypted credentials"
+      action: "If the flag `--skip-decrypted-diffs` is checked, decrypted diffs will not be configured in git. If not checked, they will be configured."
+
+ # Presets
+    preset_title: "Rails Presets"
+    preset_description: "Choose a preset configuration for your Rails app."
+    
+    preset_none:
+      title: "No preset"
+      description: "No specific configuration will be applied."
+      action: "If this option is selected, the app will be generated with the options specified."
+
+    api:
+      title: "API Only"
+      description: "Preconfigure the app for API-only usage."
+      action: "If selected, the app will be configured with an API-only stack, omitting default frontend features.
+              \nBased on the specified options, the following options will also be activated:
+              \n  --skip-javascript [due to --api]
+              \n  --skip-hotwire [due to --skip-javascript]
+              \n  --skip-asset-pipeline [due to --api]"
+
+    minimal:
+      title: "Minimal"
+      description: "Generate a minimal Rails application."
+      action: "If selected, a minimal version of Rails will be generated with only the most essential components.
+               \nBased on the specified options, the following options will also be activated:
+
+               \n--skip-active-job [due to --minimal]
+               \n--skip-action-mailer [due to --skip-active-job, --minimal]
+               \n--skip-action-mailbox [due to --skip-active-storage, --minimal]
+               \n--skip-active-storage [due to --skip-active-job, --minimal]
+               \n--skip-action-text [due to --skip-active-storage, --minimal]
+               \n--skip-javascript [due to --minimal]
+               \n--skip-hotwire [due to --skip-javascript, --minimal]
+               \n--skip-action-cable [due to --minimal]
+               \n--skip-bootsnap [due to --minimal]
+               \n--skip-dev-gems [due to --minimal]
+               \n--skip-jbuilder [due to --minimal]
+               \n--skip-system-test [due to --minimal]"
+
+    # Database
+    database_title: "Database Options"
+    database_description: "Choose the database you want to preconfigure."
+
+    sqlite3:
+      title: "SQLite3"
+      description: "Use SQLite3 as the database for the application."
+      action: "If selected, SQLite3 will be configured as the default database."
+
+    mysql:
+      title: "MySQL"
+      description: "Use MySQL as the database for the application."
+      action: "If selected, MySQL will be configured as the default database."
+
+    trilogy:
+      title: "Trilogy"
+      description: "Use Trilogy as the database (alternative to MySQL)."
+      action: "If selected, Trilogy will be configured as the default database."
+
+    mariadb_mysql:
+      title: "MariaDB (MySQL)"
+      description: "Use MariaDB (compatible with MySQL) as the database."
+      action: "If selected, MariaDB will be configured as the database using MySQL."
+
+    mariadb_trilogy:
+      title: "MariaDB (Trilogy)"
+      description: "Use MariaDB with Trilogy as the database."
+      action: "If selected, MariaDB will be configured as the database using Trilogy."
+
+    postgresql:
+      title: "PostgreSQL"
+      description: "Use PostgreSQL as the database for the application."
+      action: "If selected, PostgreSQL will be configured as the default database."
+
+    # Asset Pipeline
+    pipeline_title: "Asset Pipeline"
+    pipeline_description: "Select the asset pipeline for managing your assets."
+
+    pipeline_none:
+      title: "None"
+      description: "Do not include an asset pipeline."
+      action: "If selected, no asset pipeline will be configured for managing assets."
+
+    sprockets:
+      title: "Sprockets"
+      description: "Use Sprockets as the asset pipeline."
+      action: "If selected, Sprockets will be configured as the asset pipeline."
+
+    propshaft:
+      title: "Propshaft"
+      description: "Use Propshaft as the asset pipeline."
+      action: "If selected, Propshaft will be configured as the asset pipeline."
+
+    # JavaScript
+    javascript_title: "JavaScript Options"
+    javascript_description: "Choose the JavaScript bundler or approach to include in your app."
+
+    javascript:
+      title: "Javascript"
+      description: "Do not include any JavaScript bundler or framework."
+      action: "If selected, no JavaScript setup will be configured."
+
+    importmap:
+      title: "Importmap"
+      description: "Use Importmap for managing JavaScript dependencies."
+      action: "If selected, Importmap will be used as the default JavaScript bundler."
+
+    esbuild:
+      title: "ESBuild"
+      description: "Use ESBuild as the JavaScript bundler."
+      action: "If selected, ESBuild will be configured for bundling JavaScript."
+
+    rollup:
+      title: "Rollup"
+      description: "Use Rollup as the JavaScript bundler."
+      action: "If selected, Rollup will be configured for bundling JavaScript."
+
+    webpack:
+      title: "Webpack"
+      description: "Use Webpack as the JavaScript bundler."
+      action: "If selected, Webpack will be configured for bundling JavaScript."
+
+    bun:
+      title: "Bun"
+      description: "Use Bun as the JavaScript bundler."
+      action: "If selected, Bun will be configured for bundling JavaScript."
+
+    # CSS Framework
+    css_title: "CSS Framework Options"
+    css_description: "Select the CSS framework to use for your application."
+
+    css_none:
+      title: "CSS none"
+      description: "Do not include any CSS framework."
+      action: "If selected, no CSS framework will be configured."
+
+    tailwind:
+      title: "Tailwind CSS"
+      description: "Use Tailwind CSS as the CSS framework."
+      action: "If selected, Tailwind CSS will be configured for the application."
+
+    bootstrap:
+      title: "Bootstrap"
+      description: "Use Bootstrap as the CSS framework."
+      action: "If selected, Bootstrap will be configured for the application."
+
+    bulma:
+      title: "Bulma"
+      description: "Use Bulma as the CSS framework."
+      action: "If selected, Bulma will be configured for the application."
+
+    postcss:
+      title: "PostCSS"
+      description: "Use PostCSS as the CSS framework."
+      action: "If selected, PostCSS will be configured for the application."
+
+    sass:
+      title: "Sass"
+      description: "Use Sass as the CSS framework."
+      action: "If selected, Sass will be configured for the application."
