@@ -61,15 +61,26 @@
     </div>
 
     <!-- Clipboard Section -->
-    <div data-controller="clipboard" class="sticky -top-0 z-20 w-full bg-gray-800 rounded-lg overflow-hidden shadow-md shadow-indigo-400/40 border-indigo-600" role="region" aria-label="Generated Command">
+    <div data-controller="clipboard" 
+        data-clipboard-locales-value='<%= { 
+            copy: t('.copy_to_clipboard'),
+            copied: t('.copied_to_clipboard'),
+            message: t('.copied_notification')
+        }.to_json %>' 
+        class="sticky -top-0 z-20 w-full bg-gray-800 rounded-lg overflow-hidden shadow-md shadow-indigo-400/40 border-indigo-600" 
+        role="region" 
+        aria-label="Generated Command">
       <div class="bg-gray-700 py-2 px-4 flex items-center justify-between">
         <div class="flex space-x-2">
           <div class="w-3 h-3 bg-red-500 rounded-full"></div>
           <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
           <div class="w-3 h-3 bg-green-500 rounded-full"></div>
         </div>
-        <button data-clipboard-target="button" data-action="click->clipboard#copyToClipboard" class="text-sm bg-purple-600 hover:bg-purple-700 text-white font-bold py-1.5 px-3 rounded transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50" aria-label="Copy to clipboard">
-          📋 Copy
+        <button data-clipboard-target="button"
+                data-action="click->clipboard#copyToClipboard"
+                aria-label="<%= t('.copied_notification') %>"
+                class="text-sm bg-purple-600 hover:bg-purple-700 text-white font-bold py-1.5 px-3 rounded transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50">
+          <%= t('.copy_to_clipboard') %>
         </button>
       </div>
       <div data-rails-command-target="output" data-clipboard-target="source" class="py-6 px-4 text-lg font-mono bg-gray-900"></div>
@@ -177,7 +188,7 @@
       <%= render(FlagCommand.new(flag: 'kamal',         icon: '',         type: 'checkbox', target: 'housekeeping',   checked: true, label: 'Skip Kamal Setup')) %>
       <%= render(FlagCommand.new(flag: 'solid',         icon: 'rails',    type: 'checkbox', target: 'housekeeping',   checked: true, label: 'Skip Solid Cache & Queue Setup')) %>
       <%= render(FlagCommand.new(flag: 'docker',        icon: 'docker',   type: 'checkbox', target: 'versionControl', checked: true, label: 'Skip Dockerfile, .dockerignore and bin/docker-entrypoint')) %>
-      <%= render(FlagCommand.new(flag: 'devcontainer',  icon: '',         type: 'checkbox', target: 'advanced', label: 'Generate Devcontainer Files')) %>
+      <%= render(FlagCommand.new(flag: 'devcontainer',  icon: '',         type: 'checkbox', target: 'advanced',       checked: false, label: 'Generate Devcontainer Files')) %>
     </div>
     
     <!-- Testing -->
@@ -186,8 +197,8 @@
       <p class="text-center text-gray-400"><%= t(".testing_description") %></p>
     </div>
     <div class="flex flex-col [&>*:nth-child(odd)]:bg-slate-800 [&>*:nth-child(even)]:bg-slate-700 [&>*:first-child]:rounded-t-xl [&>*:last-child]:rounded-b-xl">
-      <%= render(FlagCommand.new(flag: 'test',        type: 'checkbox', target: 'tests', checked: false, label: 'Skip Test Files')) %>
-      <%= render(FlagCommand.new(flag: 'system-test', type: 'checkbox', target: 'tests', checked: false, label: 'Skip System Tests')) %>
+      <%= render(FlagCommand.new(flag: 'test',        type: 'checkbox', target: 'tests', checked: true, label: 'Skip Test Files')) %>
+      <%= render(FlagCommand.new(flag: 'system-test', type: 'checkbox', target: 'tests', checked: true, label: 'Skip System Tests')) %>
     </div>
   </div>
 </div>

@@ -1,0 +1,35 @@
+es:
+  pages:
+    index:
+      copy_to_clipboard: "📋 Copiar"
+      copied_to_clipboard: "📋 ¡Copiado!"
+      copied_notification: "✅ ¡Copiado al portapapeles!"
+
+      preset_title: "Presets"
+      preset_description: "Elige una configuración predefinida para tu aplicación Rails."
+      
+      database_title: "Opciones de Base de Datos"
+      database_description: "Selecciona una configuración de base de datos para tu aplicación."
+      
+      housekeeping_title: "Mantenimiento"
+      housekeeping_description: "Gestiona las opciones de mantenimiento del sistema para tu aplicación."
+      
+      javascript_title: "JavaScript"
+      javascript_description: "Elige una herramienta de empaquetado de JavaScript para tu aplicación."
+      
+      css_title: "Framework CSS"
+      css_description: "Elige un framework CSS para tu aplicación."
+      
+      pipeline_title: "Pipeline de Activos"
+      pipeline_description: "Configura el pipeline de activos para tu aplicación."
+      
+      rails_components_title: "Componentes de Rails"
+      rails_components_description: "Habilita o deshabilita componentes específicos de Rails."
+
+      testing_title: "Pruebas"
+      testing_description: "Configura las opciones de prueba para tu aplicación."
+      title: "¡Vamos a crear tu nueva aplicación Rails 8!"
+      name:
+        title: "Nombre de la Aplicación"
+        description: "Establecer el nombre de la aplicación"
+        action: "La opción `--name=NAME` te permite definir el nombre de la aplicación. Si no se especifica, se utilizará un nombre por defecto."

@@ -27,5 +27,11 @@
 #       "yes": yup
 #       enabled: "ON"
 
-en:
-  hello: "Hello world"
+es:
+  footer:
+    idea_inspired: "Idea inspirada por"
+    unknown_author: "un autor desconocido"
+    help_credit: "Ayúdame a dar crédito al creador original"
+    contribute_here: "contribuyendo con más información aquí"
+    made_with_love: "Hecho con ❤️ por"
+    year: "año"

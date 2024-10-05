@@ -1,6 +1,10 @@
 en:
   pages:
     index:
+      copy_to_clipboard: "📋 Copy"
+      copied_to_clipboard: "📋 Copied!"
+      copied_notification: "✅ Copied to clipboard!"
+
       preset_title: "Presets"
       preset_description: "Choose a preset configuration for your Rails app."
       
@@ -29,3 +33,5 @@ en:
         title: "App Name"
         description: "Set the name of the application"
         action: "The `--name=NAME` flag allows you to define the name of the application. If not specified, a default name will be used."
+
+
