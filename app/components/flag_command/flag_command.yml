@@ -1,363 +1,541 @@
-en:
+es:
   flag_command:
     # Namespace
     namespace:
-      title: "Namespace"
-      description: "Include namespace (affects only isolated engines)"
-      action: "If the flag `--skip-namespace` is checked, namespaces will be skipped. If not checked, namespaces will be included."
+      title: "Espacio de Nombres"
+      description: "Incluir espacio de nombres (afecta solo a motores aislados)"
+      action: "Si se selecciona la opción `--skip-namespace`, se omitirá el espacio de nombres. De lo contrario, se incluirá el espacio de nombres."
 
     # Collision Check
     collision_check:
-      title: "Collision Check"
-      description: "Run collision check to prevent overwriting files"
-      action: "If the flag `--skip-collision-check` is checked, collision checks will be skipped. If not, collision checks will be performed."
+      title: "Comprobación de Colisiones"
+      description: "Ejecutar una comprobación de colisiones para evitar sobrescribir archivos"
+      action: "Si se selecciona la opción `--skip-collision-check`, se omitirán las comprobaciones de colisiones. De lo contrario, se realizarán las comprobaciones."
 
     # Ruby Path
     ruby:
-      title: "Ruby Path"
-      description: "Specify the path to the Ruby binary"
-      action: "The `--ruby=PATH` flag allows you to set a custom Ruby binary path. If not specified, the default Ruby will be used."
+      title: "Ruta de Ruby"
+      description: "Especificar la ruta del binario de Ruby"
+      action: "La opción `--ruby=PATH` permite definir una ruta personalizada para el binario de Ruby. Si no se especifica, se utilizará el Ruby predeterminado."
 
     # App Name
     name:
-      title: "App Name"
-      description: "Set the name of the application"
-      action: "The `--name=NAME` flag allows you to define the name of the application. If not specified, a default name will be used."
+      title: "Nombre de la Aplicación"
+      description: "Establecer el nombre de la aplicación"
+      action: "La opción `--name=NAME` permite definir el nombre de la aplicación. Si no se especifica, se utilizará un nombre por defecto."
 
     # Application Template
     template:
-      title: "Application Template"
-      description: "Use a custom application template"
-      action: "The `--template=TEMPLATE` flag allows you to specify a template. If not used, the default Rails template will be applied."
+      title: "Plantilla de la Aplicación"
+      description: "Usar una plantilla personalizada de la aplicación"
+      action: "La opción `--template=TEMPLATE` permite especificar una plantilla personalizada. Si no se usa, se aplicará la plantilla predeterminada de Rails."
 
     # Database
     database:
-      title: "Database"
-      description: "Preconfigure for a specific database"
-      action: "The `--database=DATABASE` flag configures the application for a specific database. If not specified, it defaults to sqlite3."
+      title: "Base de Datos"
+      description: "Preconfigurar para una base de datos específica"
+      action: "La opción `--database=DATABASE` configura la aplicación para una base de datos específica. Si no se especifica, por defecto será SQLite3."
 
     # Git
     git:
       title: "Git"
-      description: "Initialize a Git repository"
-      action: "If the flag `--skip-git` is checked, Git initialization will be skipped. If not checked, Git will be initialized with `.gitignore` and `.gitattributes`."
+      description: "Inicializar un repositorio Git"
+      action: |
+        **Con `--skip-git`:**
+          - Se omite la inicialización del repositorio Git.
+          - No se generan los archivos `.gitignore` y `.gitattributes`, lo que puede llevar a un seguimiento ineficiente de archivos y la inclusión de archivos no deseados en el control de versiones.
+
+        **Sin `--skip-git`:**
+          - Se inicializa un repositorio Git.
+          - Los archivos `.gitignore` y `.gitattributes` se crean automáticamente para optimizar el control de versiones y evitar el seguimiento de archivos innecesarios.
 
     # Docker
     docker:
       title: "Docker"
-      description: "Include Docker configuration files"
-      action: "If the flag `--skip-docker` is checked, Docker configuration files will not be generated. If not checked, Docker files will be added."
+      description: "Incluir archivos de configuración de Docker"
+      action: |
+        **Con `--skip-docker`:**
+          - No se generan `Dockerfile`, `.dockerignore` y `bin/docker-entrypoint`.
+          - La aplicación no se configura para ejecutarse en un contenedor Docker, lo que podría limitar su portabilidad y escalabilidad en entornos de producción.
+
+        **Sin `--skip-docker`:**
+          - Se generan automáticamente `Dockerfile`, `.dockerignore` y `bin/docker-entrypoint`.
+          - La aplicación se configura para ejecutarse en un contenedor Docker, facilitando la gestión y el despliegue en diferentes entornos.
 
     # .keep Files
     keeps:
-      title: ".keep Files"
-      description: "Include .keep files for source control"
-      action: "If the flag `--skip-keeps` is checked, `.keep` files for empty directories will be skipped. If not, they will be generated."
+      title: "Archivos .keep"
+      description: "Incluir archivos .keep para el control de versiones"
+      action: |
+        **Con `--skip-keeps`:**
+          - No se generan archivos `.keep` en los directorios vacíos.
+          - Las carpetas vacías pueden no preservarse en el control de versiones, lo que podría provocar la pérdida de la estructura del directorio.
+
+        **Sin `--skip-keeps`:**
+          - Se generan archivos `.keep` en los directorios vacíos.
+          - Las carpetas vacías se conservan en el control de versiones, ayudando a mantener la estructura del proyecto.
 
     # Action Mailer
     action_mailer:
       title: "Action Mailer"
-      description: "Include Action Mailer functionality"
-      action: "If the flag `--skip-action-mailer` is checked, Action Mailer files will not be generated. If not checked, they will be included."
+      description: "Incluir la funcionalidad de Action Mailer"
+      action: |
+        **Con `--skip-action-mailer`:**
+          - No se generan los archivos ni las configuraciones necesarias para Action Mailer.
+          - No se podrá enviar correos electrónicos, lo que podría ser un inconveniente si se necesitan enviar notificaciones o comunicaciones.
+
+        **Sin `--skip-action-mailer`:**
+          - Se incluyen todos los archivos y configuraciones necesarias para Action Mailer.
+          - La aplicación estará lista para enviar correos electrónicos.
 
     # Action Mailbox
     action_mailbox:
       title: "Action Mailbox"
-      description: "Include Action Mailbox for handling incoming emails"
-      action: "If the flag `--skip-action-mailbox` is checked, Action Mailbox will be skipped. If not, it will be added to the application."
+      description: "Incluir Action Mailbox para manejar correos electrónicos entrantes"
+      action: |
+        **Con `--skip-action-mailbox`:**
+          - No se incluye la gema Action Mailbox.
+          - La aplicación no podrá manejar correos electrónicos entrantes, lo que limita su capacidad para procesar flujos de trabajo basados en correos.
+
+        **Sin `--skip-action-mailbox`:**
+          - Se incluye la gema Action Mailbox.
+          - La aplicación estará equipada para manejar correos electrónicos entrantes y crear flujos de trabajo basados en correos.
 
     # Action Text
     action_text:
       title: "Action Text"
-      description: "Include Action Text for rich content"
-      action: "If the flag `--skip-action-text` is checked, Action Text will not be included. If not, it will be added."
+      description: "Incluir Action Text para contenido enriquecido"
+      action: |
+        **Con `--skip-action-text`:**
+          - No se incluye la gema Action Text.
+          - La funcionalidad de edición de contenido enriquecido no estará disponible.
+
+        **Sin `--skip-action-text`:**
+          - Se incluye la gema Action Text.
+          - La aplicación podrá manejar contenido enriquecido, facilitando la creación de contenido interactivo.
 
     # Active Record
     active_record:
       title: "Active Record"
-      description: "Include Active Record for database interaction"
-      action: "If the flag `--skip-active-record` is checked, Active Record files will not be generated. If not, Active Record will be included."
+      description: "Incluir Active Record para interacción con bases de datos"
+      action: |
+        **Con `--skip-active-record`:**
+          - No se generan los archivos necesarios para Active Record.
+          - La aplicación no podrá interactuar con bases de datos relacionales, limitando su capacidad para almacenar y recuperar datos.
+
+        **Sin `--skip-active-record`:**
+          - Se generan todos los archivos necesarios para Active Record.
+          - La aplicación estará configurada para interactuar con bases de datos relacionales.
 
     # Active Job
     active_job:
       title: "Active Job"
-      description: "Include Active Job for background job processing"
-      action: "If the flag `--skip-active-job` is checked, Active Job will not be generated. If not, it will be added."
+      description: "Incluir Active Job para procesamiento de trabajos en segundo plano"
+      action: |
+        **Con `--skip-active-job`:**
+          - No se generan los archivos ni configuraciones necesarias para Active Job.
+          - No será posible procesar trabajos en segundo plano, lo que podría afectar tareas que deben ejecutarse de manera asíncrona.
+
+        **Sin `--skip-active-job`:**
+          - Se incluyen los archivos necesarios para Active Job.
+          - La aplicación estará preparada para manejar trabajos en segundo plano.
 
     # Active Storage
     active_storage:
       title: "Active Storage"
-      description: "Include Active Storage for file uploads"
-      action: "If the flag `--skip-active-storage` is checked, Active Storage files will not be generated. If not, Active Storage will be included."
+      description: "Incluir Active Storage para la carga de archivos"
+      action: |
+        **Con `--skip-active-storage`:**
+          - No se generan los archivos ni configuraciones de Active Storage.
+          - No será posible gestionar la carga y almacenamiento de archivos, limitando la capacidad de la aplicación para manejar archivos de usuarios.
+
+        **Sin `--skip-active-storage`:**
+          - Se generan los archivos y configuraciones necesarios para Active Storage.
+          - La aplicación podrá cargar y gestionar archivos de forma eficiente.
 
     # Action Cable
     action_cable:
       title: "Action Cable"
-      description: "Include Action Cable for real-time WebSocket features"
-      action: "If the flag `--skip-action-cable` is checked, Action Cable files will not be included. If not, Action Cable will be generated."
+      description: "Incluir Action Cable para características en tiempo real con WebSockets"
+      action: |
+        **Con `--skip-action-cable`:**
+          - No se incluyen los archivos necesarios para Action Cable.
+          - No se podrá realizar comunicación en tiempo real a través de WebSockets.
+
+        **Sin `--skip-action-cable`:**
+          - Se incluyen los archivos y configuraciones para Action Cable.
+          - La aplicación estará equipada para permitir comunicación en tiempo real.
 
     # Asset Pipeline
     asset_pipeline:
       title: "Asset Pipeline"
-      description: "Include the asset pipeline for managing assets"
-      action: "If the flag `--skip-asset-pipeline` is checked, the asset pipeline will not be included. If not, it will be added."
+      description: "Incluir Asset Pipeline para gestionar los activos"
+      action: |
+        **Con `--skip-asset-pipeline`:**
+          - No se incluye Asset Pipeline.
+          - La aplicación no podrá gestionar sus activos correctamente, lo que podría provocar una carga ineficiente de archivos CSS y JavaScript.
+
+        **Sin `--skip-asset-pipeline`:**
+          - Se incluye Asset Pipeline.
+          - La aplicación podrá gestionar los activos de manera eficiente, optimizando la carga de archivos CSS y JavaScript.
 
     # Hotwire
     hotwire:
       title: "Hotwire"
-      description: "Include Hotwire integration for reactive updates"
-      action: "If the flag `--skip-hotwire` is checked, Hotwire will be skipped. If not, Hotwire integration will be added."
+      description: "Incluir la integración de Hotwire para actualizaciones reactivas"
+      action: |
+        **Con `--skip-hotwire`:**
+          - Se omite la integración de Hotwire.
+          - No estarán disponibles las actualizaciones reactivas en tiempo real, limitando la experiencia del usuario.
+
+        **Sin `--skip-hotwire`:**
+          - Se incluye la integración de Hotwire.
+          - La aplicación podrá realizar actualizaciones reactivas en tiempo real, mejorando la experiencia del usuario.
 
     # Jbuilder
     jbuilder:
       title: "Jbuilder"
-      description: "Include Jbuilder for building JSON APIs"
-      action: "If the flag `--skip-jbuilder` is checked, Jbuilder will not be included. If not, it will be added."
+      description: "Incluir Jbuilder para construir APIs JSON"
+      action: |
+        **Con `--skip-jbuilder`:**
+          - No se incluye la gema Jbuilder.
+          - No será fácil construir APIs JSON sin la gema Jbuilder.
+
+        **Sin `--skip-jbuilder`:**
+          - Se incluye la gema Jbuilder.
+          - La aplicación podrá construir APIs JSON de manera sencilla.
 
     # Test Files
     test:
-      title: "Test Files"
-      description: "Include test files for the application"
-      action: "If the flag `--skip-test` is checked, test files will not be generated. If not, they will be included."
+      title: "Archivos de Prueba"
+      description: "Incluir archivos de prueba para la aplicación"
+      action: |
+        **Con `--skip-test`:**
+          - No se generan archivos de prueba.
+          - La aplicación carecerá de pruebas automatizadas, lo que puede dificultar el mantenimiento y la calidad del código.
+
+        **Sin `--skip-test`:**
+          - Se incluyen los archivos de prueba.
+          - La aplicación estará configurada con pruebas automatizadas, ayudando a asegurar la calidad del código.
 
     # System Test
     system_test:
-      title: "System Test"
-      description: "Include system test files"
-      action: "If the flag `--skip-system-test` is checked, system test files will not be included. If not, they will be added."
+      title: "Prueba del Sistema"
+      description: "Incluir archivos de prueba del sistema"
+      action: |
+        **Con `--skip-system-test`:**
+          - No se generan archivos de prueba del sistema.
+          - No habrá pruebas que verifiquen el comportamiento completo de la aplicación en un entorno simulado.
+
+        **Sin `--skip-system-test`:**
+          - Se generan los archivos de prueba del sistema.
+          - La aplicación tendrá pruebas que verificarán su comportamiento en un entorno simulado, ayudando en la validación del flujo del usuario.
 
     # Bootsnap
     bootsnap:
       title: "Bootsnap"
-      description: "Include Bootsnap for speeding up boot time"
-      action: "If the flag `--skip-bootsnap` is checked, Bootsnap will not be added. If not, it will be included."
+      description: "Incluir Bootsnap para acelerar el tiempo de arranque"
+      action: |
+        **Con `--skip-bootsnap`:**
+          - No se incluye la gema Bootsnap.
+          - La aplicación podría tener un tiempo de arranque más lento, ya que no se optimizará la carga de archivos.
+
+        **Sin `--skip-bootsnap`:**
+          - Se incluye la gema Bootsnap.
+          - La aplicación tendrá un tiempo de arranque más rápido gracias a la optimización de la carga de archivos.
 
     # Development Gems
     dev_gems:
-      title: "Development Gems"
-      description: "Include development-specific gems (e.g., web-console)"
-      action: "If the flag `--skip-dev-gems` is checked, development gems will be skipped. If not, they will be included."
+      title: "Gemas de Desarrollo"
+      description: "Incluir gemas adicionales para el desarrollo"
+      action: |
+        **Con `--skip-dev-gems`:**
+          - No se incluyen gemas de desarrollo como `web-console`.
+          - La aplicación podría carecer de herramientas útiles para depurar durante el desarrollo.
+
+        **Sin `--skip-dev-gems`:**
+          - Se incluyen gemas de desarrollo.
+          - La aplicación contará con herramientas adicionales para facilitar el desarrollo y la depuración.
 
     # Thruster
     thruster:
       title: "Thruster"
-      description: "Include Thruster setup"
-      action: "If the flag `--skip-thruster` is checked, Thruster setup will not be included. If not, it will be added."
+      description: "Incluir Thruster para la gestión de contenedores"
+      action: |
+        **Con `--skip-thruster`:**
+          - No se incluye Thruster.
+          - La gestión de contenedores puede ser menos eficiente, afectando el flujo de trabajo.
+
+        **Sin `--skip-thruster`:**
+          - Se incluye Thruster.
+          - La aplicación podrá gestionar contenedores de manera más eficiente.
 
     # RuboCop
     rubocop:
       title: "RuboCop"
-      description: "Include RuboCop for code linting"
-      action: "If the flag `--skip-rubocop` is checked, RuboCop setup will not be included. If not, it will be added."
+      description: "Incluir RuboCop para la calidad del código"
+      action: |
+        **Con `--skip-rubocop`:**
+          - No se incluye la configuración de RuboCop.
+          - La aplicación podría carecer de una herramienta para mantener la calidad y consistencia del código.
+
+        **Sin `--skip-rubocop`:**
+          - Se incluye RuboCop.
+          - La aplicación estará equipada con herramientas para mantener la calidad del código.
 
     # Brakeman
     brakeman:
       title: "Brakeman"
-      description: "Include Brakeman for security checks"
-      action: "If the flag `--skip-brakeman` is checked, Brakeman setup will be skipped. If not, it will be included."
+      description: "Incluir Brakeman para análisis de seguridad"
+      action: |
+        **Con `--skip-brakeman`:**
+          - No se incluye Brakeman.
+          - La aplicación no contará con una herramienta para escanear vulnerabilidades de seguridad.
 
-    # GitHub CI
+        **Sin `--skip-brakeman`:**
+          - Se incluye Brakeman.
+          - La aplicación estará equipada para realizar análisis de seguridad.
+
+    # Continuous Integration (CI)
     ci:
-      title: "GitHub CI"
-      description: "Include GitHub CI configuration files"
-      action: "If the flag `--skip-ci` is checked, GitHub CI files will not be included. If not, they will be generated."
+      title: "Integración Continua"
+      description: "Incluir archivos de configuración para CI"
+      action: |
+        **Con `--skip-ci`:**
+          - No se generan archivos de configuración para CI (como los de GitHub Actions).
+          - La automatización de pruebas y despliegues puede ser más difícil de implementar.
+
+        **Sin `--skip-ci`:**
+          - Se generan archivos de configuración para CI.
+          - La aplicación estará preparada para la automatización de pruebas y despliegues.
 
     # Kamal
     kamal:
       title: "Kamal"
-      description: "Include Kamal for deployment configuration"
-      action: "If the flag `--skip-kamal` is checked, Kamal setup will be skipped. If not, it will be added."
+      description: "Incluir Kamal para facilitar el despliegue"
+      action: |
+        **Con `--skip-kamal`:**
+          - No se incluye la configuración de Kamal.
+          - El despliegue de la aplicación puede ser menos eficiente.
 
-    # Solid Cache & Queue
+        **Sin `--skip-kamal`:**
+          - Se incluye Kamal.
+          - La aplicación estará configurada para facilitar el despliegue.
+
+    # Solid
     solid:
-      title: "Solid Cache & Queue"
-      description: "Include Solid Cache & Queue setup"
-      action: "If the flag `--skip-solid` is checked, Solid Cache & Queue will not be included. If not, they will be added."
+      title: "Solid"
+      description: "Incluir Solid para la caché y el procesamiento en cola"
+      action: |
+        **Con `--skip-solid`:**
+          - No se incluye Solid.
+          - Las funcionalidades de caché y procesamiento en cola no estarán disponibles.
+
+        **Sin `--skip-solid`:**
+          - Se incluye Solid.
+          - La aplicación estará equipada para manejar la caché y el procesamiento en cola.
 
     # Devcontainer
     devcontainer:
       title: "Devcontainer"
-      description: "Generate devcontainer files for development environments"
-      action: "If the flag `--skip-devcontainer` is checked, devcontainer files will not be generated. If not, they will be added."
+      description: "Generar archivos de devcontainer para entornos de desarrollo"
+      action: |
+        **Con `--skip-devcontainer`:**
+          - No se generarán archivos de configuración para devcontainer.
+          - Puede dificultar la creación de un entorno de desarrollo consistente y replicable.
+
+        **Con `--devcontainer`:**
+          - Se generarán archivos de configuración para devcontainer.
+          - Ideal para quienes desean un entorno de desarrollo bien definido y fácil de replicar.
+
+        **Con `--no-devcontainer`:**
+          - Se generarán archivos de configuración para devcontainer, pero se desactivarán configuraciones adicionales del entorno.
+          - Útil si se desea generar archivos básicos sin configuraciones extra.
+
+        **Sin `--skip-devcontainer`:**
+          - Se generarán archivos de configuración para devcontainer.
+          - Esto facilitará la creación de un entorno de desarrollo que sea fácil de configurar y usar en diferentes máquinas.
 
     # JavaScript Approach
     javascript_approach:
-      title: "JavaScript Approach"
-      description: "Choose the JavaScript approach"
-      action: "If the `--javascript=JAVASCRIPT` flag is used, the specified JavaScript approach will be configured (default: importmap)."
+      title: "Enfoque de JavaScript"
+      description: "Elige el enfoque de JavaScript"
+      action: "Si se utiliza la opción `--javascript=JAVASCRIPT`, se configurará el enfoque especificado de JavaScript (por defecto: importmap)."
 
     # CSS Processor
     css_processor:
-      title: "CSS Processor"
-      description: "Choose a CSS processor"
-      action: "If the `--css=CSS` flag is specified, the selected CSS processor will be used. If not specified, no CSS processor will be added."
+      title: "Procesador CSS"
+      description: "Elige un procesador de CSS"
+      action: "Si se especifica la opción `--css=CSS`, se usará el procesador de CSS seleccionado. Si no se especifica, no se incluirá ningún procesador de CSS."
 
     # Bundle Install
     bundle:
-      title: "Bundle Install"
-      description: "Run bundle install after generating the application"
-      action: "If the flag `--skip-bundle` is checked, `bundle install` will not run. If not checked, `bundle install` will be executed."
+      title: "Instalación de Bundle"
+      description: "Ejecutar bundle install después de generar la aplicación"
+      action: "Si se selecciona la opción `--skip-bundle`, no se ejecutará `bundle install`. De lo contrario, se ejecutará."
 
     # Decrypted Diffs
     decrypted_diffs:
-      title: "Decrypted Diffs"
-      description: "Configure git to show decrypted diffs of encrypted credentials"
-      action: "If the flag `--skip-decrypted-diffs` is checked, decrypted diffs will not be configured in git. If not checked, they will be configured."
+      title: "Diferencias Descifradas"
+      description: "Configurar git para mostrar diferencias descifradas de credenciales cifradas"
+      action: "Si se selecciona la opción `--skip-decrypted-diffs`, no se configurarán diferencias descifradas en git. De lo contrario, sí se configurarán."
 
- # Presets
-    preset_title: "Rails Presets"
-    preset_description: "Choose a preset configuration for your Rails app."
-    
+    # Presets
+    preset_title: "Presets de Rails"
+    preset_description: "Elige una configuración predefinida para tu aplicación Rails."
+
     preset_none:
-      title: "No preset"
-      description: "No specific configuration will be applied."
-      action: "If this option is selected, the app will be generated with the options specified."
+      title: "Sin preset"
+      description: "No se aplicará ninguna configuración específica."
+      action: "Si se selecciona esta opción, la aplicación se generará con las opciones especificadas."
 
     api:
-      title: "API Only"
-      description: "Preconfigure the app for API-only usage."
-      action: "If selected, the app will be configured with an API-only stack, omitting default frontend features.
-              \nBased on the specified options, the following options will also be activated:
-              \n  --skip-javascript [due to --api]
-              \n  --skip-hotwire [due to --skip-javascript]
-              \n  --skip-asset-pipeline [due to --api]"
+      title: "Solo API"
+      description: "Preconfigurar la aplicación para uso exclusivo de API."
+      action: |
+        Si se selecciona, la aplicación se configurará con una pila solo para API, omitiendo las características predeterminadas del frontend.
+        Basado en las opciones especificadas, también se activarán las siguientes opciones:
+           --skip-javascript [debido a --api]
+           --skip-hotwire [debido a --skip-javascript]
+           --skip-asset-pipeline [debido a --api]
 
     minimal:
-      title: "Minimal"
-      description: "Generate a minimal Rails application."
-      action: "If selected, a minimal version of Rails will be generated with only the most essential components.
-               \nBased on the specified options, the following options will also be activated:
+      title: "Mínima"
+      description: "Generar una aplicación Rails mínima."
+      action: |
+        Si se selecciona, se generará una versión mínima de Rails con los componentes más esenciales.
+        Basado en las opciones especificadas, también se activarán las siguientes opciones:
 
-               \n--skip-active-job [due to --minimal]
-               \n--skip-action-mailer [due to --skip-active-job, --minimal]
-               \n--skip-action-mailbox [due to --skip-active-storage, --minimal]
-               \n--skip-active-storage [due to --skip-active-job, --minimal]
-               \n--skip-action-text [due to --skip-active-storage, --minimal]
-               \n--skip-javascript [due to --minimal]
-               \n--skip-hotwire [due to --skip-javascript, --minimal]
-               \n--skip-action-cable [due to --minimal]
-               \n--skip-bootsnap [due to --minimal]
-               \n--skip-dev-gems [due to --minimal]
-               \n--skip-jbuilder [due to --minimal]
-               \n--skip-system-test [due to --minimal]"
+          --skip-active-job [debido a --minimal]
+          --skip-action-mailer [debido a --skip-active-job, --minimal]
+          --skip-action-mailbox [debido a --skip-active-storage, --minimal]
+          --skip-active-storage [debido a --skip-active-job, --minimal]
+          --skip-action-text [debido a --skip-active-storage, --minimal]
+          --skip-javascript [debido a --minimal]
+          --skip-hotwire [debido a --skip-javascript, --minimal]
+          --skip-action-cable [debido a --minimal]
+          --skip-bootsnap [debido a --minimal]
+          --skip-dev-gems [debido a --minimal]
+          --skip-jbuilder [debido a --minimal]
+          --skip-system-test [debido a --minimal]
 
     # Database
-    database_title: "Database Options"
-    database_description: "Choose the database you want to preconfigure."
+    database_title: "Opciones de Base de Datos"
+    database_description: "Elige la base de datos que deseas preconfigurar."
 
     sqlite3:
       title: "SQLite3"
-      description: "Use SQLite3 as the database for the application."
-      action: "If selected, SQLite3 will be configured as the default database."
+      description: "Usar SQLite3 como la base de datos de la aplicación."
+      action: "Si se selecciona, SQLite3 se configurará como la base de datos predeterminada."
 
     mysql:
       title: "MySQL"
-      description: "Use MySQL as the database for the application."
-      action: "If selected, MySQL will be configured as the default database."
+      description: "Usar MySQL como la base de datos de la aplicación."
+      action: "Si se selecciona, MySQL se configurará como la base de datos predeterminada."
 
     trilogy:
       title: "Trilogy"
-      description: "Use Trilogy as the database (alternative to MySQL)."
-      action: "If selected, Trilogy will be configured as the default database."
+      description: "Usar Trilogy como la base de datos (alternativa a MySQL)."
+      action: "Si se selecciona, Trilogy se configurará como la base de datos predeterminada."
 
     mariadb_mysql:
       title: "MariaDB (MySQL)"
-      description: "Use MariaDB (compatible with MySQL) as the database."
-      action: "If selected, MariaDB will be configured as the database using MySQL."
+      description: "Usar MariaDB (compatible con MySQL) como la base de datos."
+      action: "Si se selecciona, MariaDB se configurará como la base de datos utilizando MySQL."
 
     mariadb_trilogy:
       title: "MariaDB (Trilogy)"
-      description: "Use MariaDB with Trilogy as the database."
-      action: "If selected, MariaDB will be configured as the database using Trilogy."
+      description: "Usar MariaDB con Trilogy como la base de datos."
+      action: "Si se selecciona, MariaDB se configurará como la base de datos utilizando Trilogy."
 
     postgresql:
       title: "PostgreSQL"
-      description: "Use PostgreSQL as the database for the application."
-      action: "If selected, PostgreSQL will be configured as the default database."
+      description: "Usar PostgreSQL como la base de datos de la aplicación."
+      action: "Si se selecciona, PostgreSQL se configurará como la base de datos predeterminada."
 
     # Asset Pipeline
-    pipeline_title: "Asset Pipeline"
-    pipeline_description: "Select the asset pipeline for managing your assets."
+    pipeline_title: "Pipeline de Activos"
+    pipeline_description: "Selecciona el pipeline de activos para gestionar tus activos."
 
     pipeline_none:
-      title: "None"
-      description: "Do not include an asset pipeline."
-      action: "If selected, no asset pipeline will be configured for managing assets."
+      title: "Ninguno"
+      description: "No incluir un pipeline de activos."
+      action: "Si se selecciona, no se configurará ningún pipeline de activos."
 
     sprockets:
       title: "Sprockets"
-      description: "Use Sprockets as the asset pipeline."
-      action: "If selected, Sprockets will be configured as the asset pipeline."
+      description: "Usar Sprockets como el pipeline de activos."
+      action: "Si se selecciona, Sprockets se configurará como el pipeline de activos."
 
     propshaft:
       title: "Propshaft"
-      description: "Use Propshaft as the asset pipeline."
-      action: "If selected, Propshaft will be configured as the asset pipeline."
+      description: "Usar Propshaft como el pipeline de activos."
+      action: "Si se selecciona, Propshaft se configurará como el pipeline de activos."
 
     # JavaScript
-    javascript_title: "JavaScript Options"
-    javascript_description: "Choose the JavaScript bundler or approach to include in your app."
+    javascript_title: "Opciones de JavaScript"
+    javascript_description: "Elige el empaquetador o enfoque de JavaScript para incluir en tu aplicación."
 
     javascript:
-      title: "Javascript"
-      description: "Do not include any JavaScript bundler or framework."
-      action: "If selected, no JavaScript setup will be configured."
+      title: "JavaScript"
+      description: "No incluir ningún empaquetador o marco de JavaScript."
+      action: "Si se selecciona, no se configurará ningún enfoque de JavaScript."
 
     importmap:
       title: "Importmap"
-      description: "Use Importmap for managing JavaScript dependencies."
-      action: "If selected, Importmap will be used as the default JavaScript bundler."
+      description: "Usar Importmap para gestionar las dependencias de JavaScript."
+      action: "Si se selecciona, Importmap se utilizará como el empaquetador de JavaScript predeterminado."
 
     esbuild:
       title: "ESBuild"
-      description: "Use ESBuild as the JavaScript bundler."
-      action: "If selected, ESBuild will be configured for bundling JavaScript."
+      description: "Usar ESBuild como el empaquetador de JavaScript."
+      action: "Si se selecciona, ESBuild se configurará para empaquetar JavaScript."
 
     rollup:
       title: "Rollup"
-      description: "Use Rollup as the JavaScript bundler."
-      action: "If selected, Rollup will be configured for bundling JavaScript."
+      description: "Usar Rollup como el empaquetador de JavaScript."
+      action: "Si se selecciona, Rollup se configurará para empaquetar JavaScript."
 
     webpack:
       title: "Webpack"
-      description: "Use Webpack as the JavaScript bundler."
-      action: "If selected, Webpack will be configured for bundling JavaScript."
+      description: "Usar Webpack como el empaquetador de JavaScript."
+      action: "Si se selecciona, Webpack se configurará para empaquetar JavaScript."
 
     bun:
       title: "Bun"
-      description: "Use Bun as the JavaScript bundler."
-      action: "If selected, Bun will be configured for bundling JavaScript."
+      description: "Usar Bun como el empaquetador de JavaScript."
+      action: "Si se selecciona, Bun se configurará para empaquetar JavaScript."
 
     # CSS Framework
-    css_title: "CSS Framework Options"
-    css_description: "Select the CSS framework to use for your application."
+    css_title: "Opciones de Framework CSS"
+    css_description: "Selecciona el framework CSS a usar en tu aplicación."
 
     css_none:
-      title: "CSS none"
-      description: "Do not include any CSS framework."
-      action: "If selected, no CSS framework will be configured."
+      title: "Sin CSS"
+      description: "No incluir ningún framework CSS."
+      action: "Si se selecciona, no se configurará ningún framework CSS."
 
     tailwind:
       title: "Tailwind CSS"
-      description: "Use Tailwind CSS as the CSS framework."
-      action: "If selected, Tailwind CSS will be configured for the application."
+      description: "Usar Tailwind CSS como el framework CSS."
+      action: "Si se selecciona, Tailwind CSS se configurará para la aplicación."
 
     bootstrap:
       title: "Bootstrap"
-      description: "Use Bootstrap as the CSS framework."
-      action: "If selected, Bootstrap will be configured for the application."
+      description: "Usar Bootstrap como el framework CSS."
+      action: "Si se selecciona, Bootstrap se configurará para la aplicación."
 
     bulma:
       title: "Bulma"
-      description: "Use Bulma as the CSS framework."
-      action: "If selected, Bulma will be configured for the application."
+      description: "Usar Bulma como el framework CSS."
+      action: "Si se selecciona, Bulma se configurará para la aplicación."
 
     postcss:
       title: "PostCSS"
-      description: "Use PostCSS as the CSS framework."
-      action: "If selected, PostCSS will be configured for the application."
+      description: "Usar PostCSS como el framework CSS."
+      action: "Si se selecciona, PostCSS se configurará para la aplicación."
 
     sass:
       title: "Sass"
-      description: "Use Sass as the CSS framework."
-      action: "If selected, Sass will be configured for the application."
+      description: "Usar Sass como el framework CSS."
+      action: "Si se selecciona, Sass se configurará para la aplicación."

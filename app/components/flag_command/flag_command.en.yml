@@ -1,0 +1,541 @@
+en:
+  flag_command:
+    # Namespace
+    namespace:
+      title: "Namespace"
+      description: "Include namespace (affects only isolated engines)"
+      action: "If the `--skip-namespace` flag is checked, namespaces will be skipped. Otherwise, namespaces will be included."
+
+    # Collision Check
+    collision_check:
+      title: "Collision Check"
+      description: "Run collision check to prevent overwriting files"
+      action: "If the `--skip-collision-check` flag is checked, collision checks will be skipped. Otherwise, collision checks will be performed."
+
+    # Ruby Path
+    ruby:
+      title: "Ruby Path"
+      description: "Specify the path to the Ruby binary"
+      action: "The `--ruby=PATH` flag allows you to set a custom Ruby binary path. If not specified, the default Ruby will be used."
+
+    # App Name
+    name:
+      title: "App Name"
+      description: "Set the name of the application"
+      action: "The `--name=NAME` flag allows you to define the name of the application. If not specified, a default name will be used."
+
+    # Application Template
+    template:
+      title: "Application Template"
+      description: "Use a custom application template"
+      action: "The `--template=TEMPLATE` flag allows you to specify a template. If not used, the default Rails template will be applied."
+
+    # Database
+    database:
+      title: "Database"
+      description: "Preconfigure for a specific database"
+      action: "The `--database=DATABASE` flag configures the application for a specific database. If not specified, it defaults to SQLite3."
+
+    # Git
+    git:
+      title: "Git"
+      description: "Initialize a Git repository"
+      action: |
+        **With `--skip-git`:**
+          - Git repository initialization is skipped.
+          - `.gitignore` and `.gitattributes` files are not generated, which may lead to inefficient file tracking and the inclusion of unwanted files in version control.
+
+        **Without `--skip-git`:**
+          - A Git repository is initialized.
+          - `.gitignore` and `.gitattributes` files are automatically created to optimize version control and prevent unnecessary files from being tracked.
+
+    # Docker
+    docker:
+      title: "Docker"
+      description: "Include Docker configuration files"
+      action: |
+        **With `--skip-docker`:**
+          - The `Dockerfile`, `.dockerignore`, and `bin/docker-entrypoint` files are not generated.
+          - The app is not configured to run in a Docker container, which could limit its portability and scalability in production environments.
+
+        **Without `--skip-docker`:**
+          - The `Dockerfile`, `.dockerignore`, and `bin/docker-entrypoint` files are automatically generated.
+          - The app is set up to run in a Docker container, facilitating management and deployment in various environments.
+
+    # .keep Files
+    keeps:
+      title: ".keep Files"
+      description: "Include .keep files for source control"
+      action: |
+        **With `--skip-keeps`:**
+          - `.keep` files are not generated in empty directories.
+          - Empty folders may not be preserved in version control, potentially leading to the loss of important directory structures.
+
+        **Without `--skip-keeps`:**
+          - `.keep` files are generated in empty directories.
+          - Empty folders are preserved in version control, helping to maintain the project’s structure.
+
+    # Action Mailer
+    action_mailer:
+      title: "Action Mailer"
+      description: "Include Action Mailer functionality"
+      action: |
+        **With `--skip-action-mailer`:**
+          - Action Mailer configuration and files are not generated.
+          - Email-sending functionality will not be available, which could be problematic if notifications or communications need to be sent.
+
+        **Without `--skip-action-mailer`:**
+          - All necessary configurations and files for Action Mailer are included.
+          - The app will be ready to send emails.
+
+    # Action Mailbox
+    action_mailbox:
+      title: "Action Mailbox"
+      description: "Include Action Mailbox for handling incoming emails"
+      action: |
+        **With `--skip-action-mailbox`:**
+          - The Action Mailbox gem is not included.
+          - The app will not be able to handle incoming emails, limiting its ability to process email-based workflows.
+
+        **Without `--skip-action-mailbox`:**
+          - The Action Mailbox gem is included.
+          - The app will be equipped to handle incoming emails and create workflows based on them.
+
+    # Action Text
+    action_text:
+      title: "Action Text"
+      description: "Include Action Text for rich content"
+      action: |
+        **With `--skip-action-text`:**
+          - The Action Text gem is not included.
+          - The app will not support rich text editing.
+
+        **Without `--skip-action-text`:**
+          - The Action Text gem is included.
+          - The app will be able to handle rich text content, facilitating the creation of interactive content.
+
+    # Active Record
+    active_record:
+      title: "Active Record"
+      description: "Include Active Record for database interaction"
+      action: |
+        **With `--skip-active-record`:**
+          - Active Record files are not generated.
+          - The app will not be able to interact with relational databases, limiting its ability to store and retrieve data.
+
+        **Without `--skip-active-record`:**
+          - All necessary files for Active Record are generated.
+          - The app will be configured to interact with relational databases.
+
+    # Active Job
+    active_job:
+      title: "Active Job"
+      description: "Include Active Job for background job processing"
+      action: |
+        **With `--skip-active-job`:**
+          - Active Job files and configurations are not generated.
+          - Background job processing will not be available, affecting tasks that should be executed asynchronously.
+
+        **Without `--skip-active-job`:**
+          - Active Job files and configurations are included.
+          - The app will be ready to handle background jobs.
+
+    # Active Storage
+    active_storage:
+      title: "Active Storage"
+      description: "Include Active Storage for file uploads"
+      action: |
+        **With `--skip-active-storage`:**
+          - Active Storage files and configurations are not generated.
+          - The app will not be able to manage file uploads, limiting its ability to handle user files.
+
+        **Without `--skip-active-storage`:**
+          - Active Storage files and configurations are generated.
+          - The app will be able to efficiently handle file uploads and storage.
+
+    # Action Cable
+    action_cable:
+      title: "Action Cable"
+      description: "Include Action Cable for real-time WebSocket features"
+      action: |
+        **With `--skip-action-cable`:**
+          - Action Cable files are not included.
+          - Real-time communication via WebSockets will not be available.
+
+        **Without `--skip-action-cable`:**
+          - Action Cable files and configurations are generated.
+          - The app will support real-time communication through WebSockets.
+
+    # Asset Pipeline
+    asset_pipeline:
+      title: "Asset Pipeline"
+      description: "Include the asset pipeline for managing assets"
+      action: |
+        **With `--skip-asset-pipeline`:**
+          - The asset pipeline is not included.
+          - The app may not manage its assets efficiently, leading to inefficient loading of CSS and JavaScript files.
+
+        **Without `--skip-asset-pipeline`:**
+          - The asset pipeline is included.
+          - The app will manage assets efficiently, optimizing the loading of CSS and JavaScript files.
+
+    # Hotwire
+    hotwire:
+      title: "Hotwire"
+      description: "Include Hotwire integration for reactive updates"
+      action: |
+        **With `--skip-hotwire`:**
+          - Hotwire integration is omitted.
+          - Real-time reactive updates will not be available, limiting the user experience.
+
+        **Without `--skip-hotwire`:**
+          - Hotwire is included.
+          - The app will be able to provide real-time reactive updates, improving the user experience.
+
+    # Jbuilder
+    jbuilder:
+      title: "Jbuilder"
+      description: "Include Jbuilder for building JSON APIs"
+      action: |
+        **With `--skip-jbuilder`:**
+          - The Jbuilder gem is not included.
+          - Building JSON APIs may be more difficult without the Jbuilder gem.
+
+        **Without `--skip-jbuilder`:**
+          - The Jbuilder gem is included.
+          - The app will be able to build JSON APIs more easily.
+
+    # Test Files
+    test:
+      title: "Test Files"
+      description: "Include test files for the application"
+      action: |
+        **With `--skip-test`:**
+          - Test files are not generated.
+          - The app will lack automated tests, which may hinder code quality and maintenance.
+
+        **Without `--skip-test`:**
+          - Test files are included.
+          - The app will be configured with automated tests, helping to ensure code quality.
+
+    # System Test
+    system_test:
+      title: "System Test"
+      description: "Include system test files"
+      action: |
+        **With `--skip-system-test`:**
+          - System test files are not generated.
+          - There will be no tests to verify the full behavior of the app in a simulated environment.
+
+        **Without `--skip-system-test`:**
+          - System test files are generated.
+          - The app will have tests that verify its behavior in a simulated environment, aiding in the validation of the user flow.
+
+    # Bootsnap
+    bootsnap:
+      title: "Bootsnap"
+      description: "Include Bootsnap for speeding up boot time"
+      action: |
+        **With `--skip-bootsnap`:**
+          - The Bootsnap gem is not included.
+          - The app may have slower boot times, as file loading will not be optimized.
+
+        **Without `--skip-bootsnap`:**
+          - The Bootsnap gem is included.
+          - The app will have faster boot times due to optimized file loading.
+
+    # Development Gems
+    dev_gems:
+      title: "Development Gems"
+      description: "Include additional development gems"
+      action: |
+        **With `--skip-dev-gems`:**
+          - Development gems like `web-console` are not included.
+          - The app may lack useful debugging tools during development.
+
+        **Without `--skip-dev-gems`:**
+          - Development gems are included.
+          - The app will have additional tools to facilitate development and debugging.
+
+    # Thruster
+    thruster:
+      title: "Thruster"
+      description: "Include Thruster for container management"
+      action: |
+        **With `--skip-thruster`:**
+          - Thruster is not included.
+          - Container management may be less efficient, affecting the workflow.
+
+        **Without `--skip-thruster`:**
+          - Thruster is included.
+          - The app will manage containers more efficiently.
+
+    # RuboCop
+    rubocop:
+      title: "RuboCop"
+      description: "Include RuboCop for code quality"
+      action: |
+        **With `--skip-rubocop`:**
+          - RuboCop configuration is not included.
+          - The app may lack a tool to maintain code quality and consistency.
+
+        **Without `--skip-rubocop`:**
+          - RuboCop is included.
+          - The app will have tools to maintain code quality.
+
+    # Brakeman
+    brakeman:
+      title: "Brakeman"
+      description: "Include Brakeman for security scanning"
+      action: |
+        **With `--skip-brakeman`:**
+          - Brakeman is not included.
+          - The app will not have a tool to scan for security vulnerabilities.
+
+        **Without `--skip-brakeman`:**
+          - Brakeman is included.
+          - The app will be equipped to perform security scans.
+
+    # Continuous Integration (CI)
+    ci:
+      title: "Continuous Integration"
+      description: "Include CI configuration files"
+      action: |
+        **With `--skip-ci`:**
+          - CI configuration files (e.g., GitHub Actions) are not generated.
+          - Automating tests and deployments may be harder to implement.
+
+        **Without `--skip-ci`:**
+          - CI configuration files are generated.
+          - The app will be ready for automating tests and deployments.
+
+    # Kamal
+    kamal:
+      title: "Kamal"
+      description: "Include Kamal for easy deployment"
+      action: |
+        **With `--skip-kamal`:**
+          - Kamal configuration is not included.
+          - Deploying the app may be less efficient.
+
+        **Without `--skip-kamal`:**
+          - Kamal is included.
+          - The app will be configured for easier deployment.
+
+    # Solid
+    solid:
+      title: "Solid"
+      description: "Include Solid for caching and queueing"
+      action: |
+        **With `--skip-solid`:**
+          - Solid is not included.
+          - Caching and queuing features will not be available.
+
+        **Without `--skip-solid`:**
+          - Solid is included.
+          - The app will handle caching and queuing.
+
+    # Devcontainer
+    devcontainer:
+      title: "Devcontainer"
+      description: "Generate devcontainer files for development environments"
+      action: |
+        **With `--skip-devcontainer`:**
+          - Devcontainer configuration files are not generated.
+          - Creating a consistent and replicable development environment may be more difficult.
+
+        **With `--devcontainer`:**
+          - Devcontainer configuration files are generated.
+          - Ideal for those who want a well-defined, easily replicable development environment.
+
+        **With `--no-devcontainer`:**
+          - Devcontainer configuration files are generated, but additional environment settings are disabled.
+          - Useful if you want to generate basic configuration files without additional setups.
+
+        **Without `--skip-devcontainer`:**
+          - Devcontainer configuration files are generated.
+          - This will help create an easy-to-configure development environment across different machines.
+
+    # JavaScript Approach
+    javascript_approach:
+      title: "JavaScript Approach"
+      description: "Choose the JavaScript approach"
+      action: "If the `--javascript=JAVASCRIPT` flag is used, the specified JavaScript approach will be configured (default: importmap)."
+
+    # CSS Processor
+    css_processor:
+      title: "CSS Processor"
+      description: "Choose a CSS processor"
+      action: "If the `--css=CSS` flag is specified, the selected CSS processor will be used. If not specified, no CSS processor will be added."
+
+    # Bundle Install
+    bundle:
+      title: "Bundle Install"
+      description: "Run bundle install after generating the application"
+      action: "If the `--skip-bundle` flag is checked, `bundle install` will not run. Otherwise, `bundle install` will be executed."
+
+    # Decrypted Diffs
+    decrypted_diffs:
+      title: "Decrypted Diffs"
+      description: "Configure git to show decrypted diffs of encrypted credentials"
+      action: "If the `--skip-decrypted-diffs` flag is checked, decrypted diffs will not be configured in git. Otherwise, they will be configured."
+
+    # Presets
+    preset_title: "Rails Presets"
+    preset_description: "Choose a preset configuration for your Rails app."
+
+    preset_none:
+      title: "No preset"
+      description: "No specific configuration will be applied."
+      action: "If this option is selected, the app will be generated with the options specified."
+
+    api:
+      title: "API Only"
+      description: "Preconfigure the app for API-only usage."
+      action: |
+        If selected, the app will be configured with an API-only stack, omitting default frontend features.
+        \nBased on the specified options, the following options will also be activated:
+        \n  --skip-javascript [due to --api]
+        \n  --skip-hotwire [due to --skip-javascript]
+        \n  --skip-asset-pipeline [due to --api]
+
+    minimal:
+      title: "Minimal"
+      description: "Generate a minimal Rails application."
+      action: |
+        If selected, a minimal version of Rails will be generated with only the most essential components.
+        \nBased on the specified options, the following options will also be activated:
+
+        \n--skip-active-job [due to --minimal]
+        \n--skip-action-mailer [due to --skip-active-job, --minimal]
+        \n--skip-action-mailbox [due to --skip-active-storage, --minimal]
+        \n--skip-active-storage [due to --skip-active-job, --minimal]
+        \n--skip-action-text [due to --skip-active-storage, --minimal]
+        \n--skip-javascript [due to --minimal]
+        \n--skip-hotwire [due to --skip-javascript, --minimal]
+        \n--skip-action-cable [due to --minimal]
+        \n--skip-bootsnap [due to --minimal]
+        \n--skip-dev-gems [due to --minimal]
+        \n--skip-jbuilder [due to --minimal]
+        \n--skip-system-test [due to --minimal]
+
+    # Database
+    database_title: "Database Options"
+    database_description: "Choose the database you want to preconfigure."
+
+    sqlite3:
+      title: "SQLite3"
+      description: "Use SQLite3 as the database for the application."
+      action: "If selected, SQLite3 will be configured as the default database."
+
+    mysql:
+      title: "MySQL"
+      description: "Use MySQL as the database for the application."
+      action: "If selected, MySQL will be configured as the default database."
+
+    trilogy:
+      title: "Trilogy"
+      description: "Use Trilogy as the database (alternative to MySQL)."
+      action: "If selected, Trilogy will be configured as the default database."
+
+    mariadb_mysql:
+      title: "MariaDB (MySQL)"
+      description: "Use MariaDB (compatible with MySQL) as the database."
+      action: "If selected, MariaDB will be configured as the database using MySQL."
+
+    mariadb_trilogy:
+      title: "MariaDB (Trilogy)"
+      description: "Use MariaDB with Trilogy as the database."
+      action: "If selected, MariaDB will be configured as the database using Trilogy."
+
+    postgresql:
+      title: "PostgreSQL"
+      description: "Use PostgreSQL as the database for the application."
+      action: "If selected, PostgreSQL will be configured as the default database."
+
+    # Asset Pipeline
+    pipeline_title: "Asset Pipeline"
+    pipeline_description: "Select the asset pipeline for managing your assets."
+
+    pipeline_none:
+      title: "None"
+      description: "Do not include an asset pipeline."
+      action: "If selected, no asset pipeline will be configured for managing assets."
+
+    sprockets:
+      title: "Sprockets"
+      description: "Use Sprockets as the asset pipeline."
+      action: "If selected, Sprockets will be configured as the asset pipeline."
+
+    propshaft:
+      title: "Propshaft"
+      description: "Use Propshaft as the asset pipeline."
+      action: "If selected, Propshaft will be configured as the asset pipeline."
+
+    # JavaScript
+    javascript_title: "JavaScript Options"
+    javascript_description: "Choose the JavaScript bundler or approach to include in your app."
+
+    javascript:
+      title: "Javascript"
+      description: "Do not include any JavaScript bundler or framework."
+      action: "If selected, no JavaScript setup will be configured."
+
+    importmap:
+      title: "Importmap"
+      description: "Use Importmap for managing JavaScript dependencies."
+      action: "If selected, Importmap will be used as the default JavaScript bundler."
+
+    esbuild:
+      title: "ESBuild"
+      description: "Use ESBuild as the JavaScript bundler."
+      action: "If selected, ESBuild will be configured for bundling JavaScript."
+
+    rollup:
+      title: "Rollup"
+      description: "Use Rollup as the JavaScript bundler."
+      action: "If selected, Rollup will be configured for bundling JavaScript."
+
+    webpack:
+      title: "Webpack"
+      description: "Use Webpack as the JavaScript bundler."
+      action: "If selected, Webpack will be configured for bundling JavaScript."
+
+    bun:
+      title: "Bun"
+      description: "Use Bun as the JavaScript bundler."
+      action: "If selected, Bun will be configured for bundling JavaScript."
+
+    # CSS Framework
+    css_title: "CSS Framework Options"
+    css_description: "Select the CSS framework to use for your application."
+
+    css_none:
+      title: "No CSS Framework"
+      description: "Do not include any CSS framework."
+      action: "If selected, no CSS framework will be configured."
+
+    tailwind:
+      title: "Tailwind CSS"
+      description: "Use Tailwind CSS as the CSS framework."
+      action: "If selected, Tailwind CSS will be configured for the application."
+
+    bootstrap:
+      title: "Bootstrap"
+      description: "Use Bootstrap as the CSS framework."
+      action: "If selected, Bootstrap will be configured for the application."
+
+    bulma:
+      title: "Bulma"
+      description: "Use Bulma as the CSS framework."
+      action: "If selected, Bulma will be configured for the application."
+
+    postcss:
+      title: "PostCSS"
+      description: "Use PostCSS as the CSS framework."
+      action: "If selected, PostCSS will be configured for the application."
+
+    sass:
+      title: "Sass"
+      description: "Use Sass as the CSS framework."
+      action: "If selected, Sass will be configured for the application."
