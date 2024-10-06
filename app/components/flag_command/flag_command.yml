@@ -2,37 +2,37 @@ es:
   flag_command:
     # Namespace
     namespace:
-      title: "Espacio de Nombres"
+      title: "Namespace"
       description: "Incluir espacio de nombres (afecta solo a motores aislados)"
       action: "Si se selecciona la opción `--skip-namespace`, se omitirá el espacio de nombres. De lo contrario, se incluirá el espacio de nombres."
 
     # Collision Check
     collision_check:
-      title: "Comprobación de Colisiones"
+      title: "Collision Check"
       description: "Ejecutar una comprobación de colisiones para evitar sobrescribir archivos"
       action: "Si se selecciona la opción `--skip-collision-check`, se omitirán las comprobaciones de colisiones. De lo contrario, se realizarán las comprobaciones."
 
     # Ruby Path
     ruby:
-      title: "Ruta de Ruby"
+      title: "Ruby Path"
       description: "Especificar la ruta del binario de Ruby"
       action: "La opción `--ruby=PATH` permite definir una ruta personalizada para el binario de Ruby. Si no se especifica, se utilizará el Ruby predeterminado."
 
     # App Name
     name:
-      title: "Nombre de la Aplicación"
+      title: "App Name"
       description: "Establecer el nombre de la aplicación"
       action: "La opción `--name=NAME` permite definir el nombre de la aplicación. Si no se especifica, se utilizará un nombre por defecto."
 
     # Application Template
     template:
-      title: "Plantilla de la Aplicación"
+      title: "Application Template"
       description: "Usar una plantilla personalizada de la aplicación"
       action: "La opción `--template=TEMPLATE` permite especificar una plantilla personalizada. Si no se usa, se aplicará la plantilla predeterminada de Rails."
 
     # Database
     database:
-      title: "Base de Datos"
+      title: "Database"
       description: "Preconfigurar para una base de datos específica"
       action: "La opción `--database=DATABASE` configura la aplicación para una base de datos específica. Si no se especifica, por defecto será SQLite3."
 
@@ -64,7 +64,7 @@ es:
 
     # .keep Files
     keeps:
-      title: "Archivos .keep"
+      title: ".keep Files"
       description: "Incluir archivos .keep para el control de versiones"
       action: |
         **Con `--skip-keeps`:**
@@ -207,7 +207,7 @@ es:
 
     # Test Files
     test:
-      title: "Archivos de Prueba"
+      title: "Test Files"
       description: "Incluir archivos de prueba para la aplicación"
       action: |
         **Con `--skip-test`:**
@@ -220,7 +220,7 @@ es:
 
     # System Test
     system_test:
-      title: "Prueba del Sistema"
+      title: "System Test"
       description: "Incluir archivos de prueba del sistema"
       action: |
         **Con `--skip-system-test`:**
@@ -246,7 +246,7 @@ es:
 
     # Development Gems
     dev_gems:
-      title: "Gemas de Desarrollo"
+      title: "Development Gems"
       description: "Incluir gemas adicionales para el desarrollo"
       action: |
         **Con `--skip-dev-gems`:**
@@ -298,7 +298,7 @@ es:
 
     # Continuous Integration (CI)
     ci:
-      title: "Integración Continua"
+      title: "Continuous Integration"
       description: "Incluir archivos de configuración para CI"
       action: |
         **Con `--skip-ci`:**
@@ -358,39 +358,39 @@ es:
 
     # JavaScript Approach
     javascript_approach:
-      title: "Enfoque de JavaScript"
+      title: "JavaScript Approach"
       description: "Elige el enfoque de JavaScript"
       action: "Si se utiliza la opción `--javascript=JAVASCRIPT`, se configurará el enfoque especificado de JavaScript (por defecto: importmap)."
 
     # CSS Processor
     css_processor:
-      title: "Procesador CSS"
+      title: "CSS Processor"
       description: "Elige un procesador de CSS"
       action: "Si se especifica la opción `--css=CSS`, se usará el procesador de CSS seleccionado. Si no se especifica, no se incluirá ningún procesador de CSS."
 
     # Bundle Install
     bundle:
-      title: "Instalación de Bundle"
+      title: "Bundle Install"
       description: "Ejecutar bundle install después de generar la aplicación"
       action: "Si se selecciona la opción `--skip-bundle`, no se ejecutará `bundle install`. De lo contrario, se ejecutará."
 
     # Decrypted Diffs
     decrypted_diffs:
-      title: "Diferencias Descifradas"
+      title: "Decrypted Diffs"
       description: "Configurar git para mostrar diferencias descifradas de credenciales cifradas"
       action: "Si se selecciona la opción `--skip-decrypted-diffs`, no se configurarán diferencias descifradas en git. De lo contrario, sí se configurarán."
 
     # Presets
-    preset_title: "Presets de Rails"
+    preset_title: "Rails Presets"
     preset_description: "Elige una configuración predefinida para tu aplicación Rails."
 
     preset_none:
-      title: "Sin preset"
+      title: "No preset"
       description: "No se aplicará ninguna configuración específica."
       action: "Si se selecciona esta opción, la aplicación se generará con las opciones especificadas."
 
     api:
-      title: "Solo API"
+      title: "API Only"
       description: "Preconfigurar la aplicación para uso exclusivo de API."
       action: |
         Si se selecciona, la aplicación se configurará con una pila solo para API, omitiendo las características predeterminadas del frontend.
@@ -400,7 +400,7 @@ es:
            --skip-asset-pipeline [debido a --api]
 
     minimal:
-      title: "Mínima"
+      title: "Minimal"
       description: "Generar una aplicación Rails mínima."
       action: |
         Si se selecciona, se generará una versión mínima de Rails con los componentes más esenciales.
@@ -420,7 +420,7 @@ es:
           --skip-system-test [debido a --minimal]
 
     # Database
-    database_title: "Opciones de Base de Datos"
+    database_title: "Database Options"
     database_description: "Elige la base de datos que deseas preconfigurar."
 
     sqlite3:
@@ -454,11 +454,11 @@ es:
       action: "Si se selecciona, PostgreSQL se configurará como la base de datos predeterminada."
 
     # Asset Pipeline
-    pipeline_title: "Pipeline de Activos"
+    pipeline_title: "Asset Pipeline"
     pipeline_description: "Selecciona el pipeline de activos para gestionar tus activos."
 
     pipeline_none:
-      title: "Ninguno"
+      title: "None"
       description: "No incluir un pipeline de activos."
       action: "Si se selecciona, no se configurará ningún pipeline de activos."
 
@@ -473,7 +473,7 @@ es:
       action: "Si se selecciona, Propshaft se configurará como el pipeline de activos."
 
     # JavaScript
-    javascript_title: "Opciones de JavaScript"
+    javascript_title: "JavaScript Options"
     javascript_description: "Elige el empaquetador o enfoque de JavaScript para incluir en tu aplicación."
 
     javascript:
@@ -507,11 +507,11 @@ es:
       action: "Si se selecciona, Bun se configurará para empaquetar JavaScript."
 
     # CSS Framework
-    css_title: "Opciones de Framework CSS"
+    css_title: "CSS Framework Options"
     css_description: "Selecciona el framework CSS a usar en tu aplicación."
 
     css_none:
-      title: "Sin CSS"
+      title: "No CSS Framework"
       description: "No incluir ningún framework CSS."
       action: "Si se selecciona, no se configurará ningún framework CSS."
 
