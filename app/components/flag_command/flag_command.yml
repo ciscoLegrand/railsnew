@@ -64,7 +64,7 @@ es:
 
     # .keep Files
     keeps:
-      title: ".keep Files"
+      title: "Crear archivos .keep"
       description: "Incluir archivos .keep para el control de versiones"
       action: |
         **Con `--skip-keeps`:**
@@ -233,7 +233,7 @@ es:
 
     # Bootsnap
     bootsnap:
-      title: "Bootsnap"
+      title: "Añadir Bootsnap"
       description: "Incluir Bootsnap para acelerar el tiempo de arranque"
       action: |
         **Con `--skip-bootsnap`:**

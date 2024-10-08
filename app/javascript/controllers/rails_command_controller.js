@@ -12,27 +12,27 @@ export default class extends Controller {
   }
 
   updateOutput() {
-    const appName = this.getAppName();
-    const presetCommand = this.getPresetCommand();
+    const appName = this.getAppName()
+    const presetCommand = this.getPresetCommand()
 
-    let pipelineCommand = '';
-    let javascriptCommand = '';
-    let cssCommand = '';
+    let pipelineCommand = ''
+    let javascriptCommand = ''
+    let cssCommand = ''
     
     if (presetCommand !== '--api') {
-      pipelineCommand = this.getPipelineCommand();
-      javascriptCommand = this.getJavascriptCommand();
-      cssCommand = this.getCssCommand();
+      pipelineCommand = this.getPipelineCommand()
+      javascriptCommand = this.getJavascriptCommand()
+      cssCommand = this.getCssCommand()
     }
     
-    const databaseCommand = this.getDatabaseCommand();
-    const housekeepingCommand = this.getHousekeepingCommand();
-    const railsComponentsCommand = this.getRailsComponentsCommand();
-    const testCommand = this.getTestCommand();
-    const advancedCommand = this.getAdvancedCommand();
-    const versionControlCommand = this.getVersionControlCommand();
-    const rubyCommand = this.getRubyCommand();
-    const templateCommand = this.getTemplateCommand();
+    const databaseCommand = this.getDatabaseCommand()
+    const housekeepingCommand = this.getHousekeepingCommand()
+    const railsComponentsCommand = this.getRailsComponentsCommand()
+    const testCommand = this.getTestCommand()
+    const advancedCommand = this.getAdvancedCommand()
+    const versionControlCommand = this.getVersionControlCommand()
+    const rubyCommand = this.getRubyCommand()
+    const templateCommand = this.getTemplateCommand()
   
     this.outputTarget.innerHTML = `
       <span class='text-green-600'>$ </span>
@@ -53,11 +53,11 @@ export default class extends Controller {
         ${rubyCommand}
         ${templateCommand}
       </span>
-    `;
+    `
   }
 
   updateCheckboxesBasedOnPreset() {
-    const presetCommand = this.getPresetCommand();
+    const presetCommand = this.getPresetCommand()
   
     const flagsToSkip = [
       'active-job',
@@ -71,28 +71,31 @@ export default class extends Controller {
       'bootsnap',
       'dev-gems',
       'jbuilder',
-      'system-test',
-      'test'
-    ];
-
-    if (presetCommand === '--minimal') {
-      this.railsComponentsTargets.forEach(checkbox => {
-        if (flagsToSkip.includes(checkbox.value)) {
-          checkbox.checked = !checkbox.checked;
-        }
-      });
-      this.testsTargets.forEach(checkbox => {
-        if (flagsToSkip.includes(checkbox.value)) {
-          checkbox.checked = !checkbox.checked;
-        }
-      });
-    }
-  }
+      'system-test'
+    ]
   
+    const allTargets = [
+      ...this.railsComponentsTargets,
+      ...this.testsTargets,
+      ...this.housekeepingTargets
+    ]
+  
+    allTargets.forEach(checkbox => {
+      const shouldSkip = flagsToSkip.includes(checkbox.value)
+  
+      if (presetCommand === '--minimal' && shouldSkip) {
+        checkbox.classList.add('hidden')
+        checkbox.disabled = true
+      } else {
+        checkbox.classList.remove('hidden')
+        checkbox.disabled = false
+      }
+    })
+  }
 
   getAppName() {
     const appName = this.inputTarget.value.trim().replace(/\s+/g, '-')
-    return appName || "myapp";
+    return appName || "myapp"
   }
 
   getPresetCommand() {
@@ -111,7 +114,7 @@ export default class extends Controller {
   }
 
   getPipelineCommand() {
-    const presetCommand = this.getPresetCommand();
+    const presetCommand = this.getPresetCommand()
     const selectedPipeline = this.pipelineTargets.find(radio => radio.checked)
     if (presetCommand === '--api') return ''
     if (selectedPipeline.value === 'pipeline_none') return '--asset-pipeline=none'
@@ -119,7 +122,7 @@ export default class extends Controller {
   }
 
   getJavascriptCommand() {
-    const presetCommand = this.getPresetCommand();
+    const presetCommand = this.getPresetCommand()
     if (presetCommand === '--api') return ''
     const selectedJS = this.javascriptTargets.find(radio => radio.checked)
     return selectedJS.value === 'javascript' ? '--skip-javascript' : `--javascript=${selectedJS.value}`
@@ -131,9 +134,6 @@ export default class extends Controller {
   }
 
   getRailsComponentsCommand() {
-    const presetCommand = this.getPresetCommand();
-    if (presetCommand === '--minimal') return ''
-
     const defaultSkips = [
       'action-cable',
       'active-job',
@@ -144,7 +144,7 @@ export default class extends Controller {
       'action-text',
       'hotwire',
       'jbuilder'
-    ];
+    ]
     
     const checkedFlags = this.railsComponentsTargets.filter(checkbox => checkbox.checked).map(checkbox => checkbox.value)
     const skipCommands = defaultSkips
