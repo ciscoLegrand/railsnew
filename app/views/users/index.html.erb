@@ -1,0 +1,15 @@
+<div class="container mx-auto md:container w-full py-8 px-12 bg-slate-300 rounded-xl shadow-md shadow-indigo-300/40 border-indigo-600">
+  <% if alert = flash[:alert] %>
+    <p class="py-2 px-3 bg-red-50 mb-5 text-red-500 font-medium rounded-lg inline-block" id="alert"><%= alert %></p>
+  <% end %>
+
+  <% if notice = flash[:notice] %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+  <% end %>
+  
+  <h1 class="font-bold text-4xl">Users</h1>
+
+  <div class="content grid grid-cols-1 lg:grid-cols-2 gap-4">
+    <%= render @users %>
+  </div>
+</div>
