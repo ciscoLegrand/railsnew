@@ -24,7 +24,7 @@
   </head>
 
   <body class="bg-gradient-to-b from-indigo-700 via-black to-black h-screen flex flex-col">
-    <header class="flex-grow lg:w-full lg:max-w-6xl mx-4 lg:mx-auto my-6 flex flex-col lg:grid lg:grid-cols-3 items-center gap-4 bg-slate-900 shadow shadow-slate-800 rounded-xl lg:p-4 text-center hover:shadow-md hover:bg-slate-800 ease-in-out duration-300">
+    <header class="flex-grow lg:w-full lg:max-w-6xl mx-4 lg:mx-auto my-6 flex flex-col lg:grid lg:grid-cols-3 items-center gap-4 bg-slate-900 shadow shadow-slate-800 rounded-xl lg:px-4 text-center hover:shadow-md hover:bg-slate-800 ease-in-out duration-300">
       <div class="flex justify-start items-center gap-4 px-4">
         <h1 class="lg:text-2xl font-bold font-mono">
           <span class="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400">
@@ -37,12 +37,23 @@
         <%= link_to "New App", root_path, class: "font-semibold text-indigo-500 hover:text-slate-200 px-3 py-1.5 rounded-lg hover:bg-indigo-400 ease-in-out duration-300" %>
       </nav>
 
-      <div class="flex justify-end items-center order-2 lg:order-3 invisible">
-        <span class="text-slate-400">contribute</span>
+      <div class="flex justify-end items-center order-2 lg:order-3">
+        
+        <% if authenticated? %>
+          <div class="flex items-end gap-4 hidden">
+            <span class="px-2 py-1 rounded-lg bg-indigo-600 text-white inline-block font-medium cursor-pointer">
+              <%= Current.user.slug %>
+            </span>
+            <%= button_to "Logout", session_path, method: :delete, class: "rounded-lg px-3 py-1.5 bg-red-600 text-white inline-block font-medium cursor-pointer" %>
+          </div>
+        <% else %>
+          <%= link_to "Log in", new_session_path, class: "font-semibold text-indigo-500 hover:text-slate-200 px-3 py-1.5 rounded-lg hover:bg-indigo-400 ease-in-out duration-300" %>
+        <% end %>
+        
       </div>
     </header>
 
-    <main class="flex-grow px-4">
+    <main class="flex-grow px-4 h-[calc(100vh-20vh)] ">
       <%= yield %>
     </main>
 
