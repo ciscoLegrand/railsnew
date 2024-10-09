@@ -23,5 +23,16 @@ module Railsnew
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.time_zone = "Europe/Madrid"
+    config.available_locales = %i[es en]
+    config.default_locale = :en
+    config.i18n.fallbacks = true
+
+    config.generators do |g|
+      g.assets false
+      g.helper false
+      g.system_tests false
+      g.orm :active_record, primary_key_type: :uuid
+    end
   end
 end
